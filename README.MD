@@ -108,3 +108,22 @@ flex常用：
 			flex-basis
 			flex
 			align-self*
+			
+// npm i react-timer-mixin --save 更新定时器的类库
+//注册定时器的类库
+var TimerMixin=require('react-timer-mixin');
+
+
+报错：
+
+	AAPT err(Facade for 2108943713) : No Delegate set : lost message:libpng error: Not a PNG file
+	AAPT: libpng error: Not a PNG file
+	AAPT err(Facade for 218841101) : No Delegate set : lost message:libpng error: Not a PNG file
+	AAPT err(Facade for 934587258) : No Delegate set : lost message:libpng error: Not a PNG file
+	AAPT err(Facade for 714762553) : No Delegate set : lost message:libpng error: Not a PNG file
+	Error: java.util.concurrent.ExecutionException: com.android.ide.common.process.ProcessException: 
+	:app:mergeDebugResources FAILED
+
+在build.gradle中android中添加：
+
+ aaptOptions { cruncherEnabled = false   }
