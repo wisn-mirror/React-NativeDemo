@@ -127,3 +127,5 @@ var TimerMixin=require('react-timer-mixin');
 在build.gradle中android中添加：
 
  aaptOptions { cruncherEnabled = false   }
+ 
+ movist：shift command +
