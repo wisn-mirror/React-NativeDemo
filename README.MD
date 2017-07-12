@@ -4,6 +4,8 @@ react-native run-android
 
 adb shell input keyevent 82
 
+react-native init F --version 0.39.2
+
 查看最新版
 npm info react-native
 
@@ -129,3 +131,9 @@ var TimerMixin=require('react-timer-mixin');
  aaptOptions { cruncherEnabled = false   }
  
  movist：shift command +
+ 
+ 
+ 
+  npm install react-native-tab-navigator --save  
+  yarn add  react-navigation
+ npm i -g npm 
