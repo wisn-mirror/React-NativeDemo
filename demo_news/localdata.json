@@ -1,0 +1,55 @@
+{
+  "status": 200,
+  "error": "",
+  "count": 4,
+  "data": [
+    {
+      "news_id": "5628",
+      "title": "阿根廷男子性侵女儿22年生8子",
+      "top_image": "http://img5.cache.netease.com/3g/2016/1/10/2016011015570932721.jpg",
+      "text_image0": "http:///img1.cache.netease.com/cnews/2016/1/10/201601101549260cae4_550.jpg",
+      "text_image1": "http:///img3.cache.netease.com/cnews/2016/1/10/201601101549536da93_550.jpg",
+      "source": "新华网",
+      "content": "",
+      "digest": "女儿9岁起被性侵至今31岁，期间还受到叔叔侵犯。",
+      "reply_count": "396",
+      "edit_time": "1452412209"
+    },
+    {
+      "news_id": "5627",
+      "title": "湖北仙桃市一化工厂突发大火",
+      "top_image": "http://img1.cache.netease.com/3g/2016/1/10/201601101635068ed9a.jpg",
+      "text_image0": "http:///img5.cache.netease.com/3g/2016/1/10/2016011016335360461.jpg",
+      "text_image1": "http:///img4.cache.netease.com/3g/2016/1/10/2016011016335528703.jpg",
+      "source": "武汉晚报",
+      "content": "",
+      "digest": "现场浓烟滚滚，消防公安已到现场，伤亡情况不详。",
+      "reply_count": "244",
+      "edit_time": "1452412209"
+    },
+    {
+      "news_id": "5626",
+      "title": "两男子夜间取钱发现满地钞票",
+      "top_image": "http://img3.cache.netease.com/3g/2016/1/10/20160110140622808e6.jpg",
+      "text_image0": "http:///img1.cache.netease.com/catchpic/2/2D/2DD184FB078FA5E87ECAC3718D4A3EBB.jpg",
+      "text_image1": "http:///img1.cache.netease.com/catchpic/9/92/92CE2D32310139033C586ACC50E65C96.jpg",
+      "source": "新民网",
+      "content": "",
+      "digest": "取款机附近地上全是钱，2人没敢动现场，赶紧报了警。",
+      "reply_count": "9137",
+      "edit_time": "1452412209"
+    },
+    {
+      "news_id": "5625",
+      "title": "男生患罕见怪病 发病打滚咬人",
+      "top_image": "http://img3.cache.netease.com/3g/2016/1/10/20160110154048e9a1d.jpg",
+      "text_image0": "http:///img5.cache.netease.com/3g/2016/1/10/20160110154008f1c1a.jpg",
+      "text_image1": "",
+      "source": "四川新闻网",
+      "content": "",
+      "digest": "母亲多次被咬；教授：这种病发病率是几十万分之一。",
+      "reply_count": "66",
+      "edit_time": "1452412209"
+    }
+  ]
+}
