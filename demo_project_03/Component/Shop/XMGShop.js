@@ -18,7 +18,7 @@ var XMGShop = React.createClass({
     render() {
         return (
             <View>
-            <Text >Shop
+            <Text >Shopdsfdsafasfdsaffjdsaklfjdsakfjdsakl;fjdsal;hellofdksafkdjsal;kfjdsal;k
                 </Text>
             </View>
         );

@@ -24,7 +24,7 @@ var HomeTopMiddleView=require('./XMGHomeTopMiddle');
 var XMGHomeCenterView=require('./XMGHomeCenterView');
 var XMGHomeBottomView=require('./XMGHomeBottomView.js');
 var HomeHotData = require('../../LocalData/HomeHotData.json');
-
+var XMGHomeBottomCommentView=require('./XMGHomeBottomCommentView.js')
 var XMGHome = React.createClass({
     render() {
         return (
@@ -39,12 +39,16 @@ var XMGHome = React.createClass({
                     <XMGHomeBottomView
                         DataArray={HomeHotData.bottomData}
                     />
+                    <XMGHomeBottomCommentView/>
                 </ScrollView>
             </View>
         );
     },
     renderNavBar(){
         return (
+            <View style={homeStyles.outViewStyle}>
+                <View style={homeStyles.outTopViewStyle}>
+                </View>
             <View style={homeStyles.navBarStyle}>
                 <Text style={homeStyles.topNavBarTextStyle}>位置</Text>
                 <TextInput
@@ -62,6 +66,7 @@ var XMGHome = React.createClass({
                     </TouchableOpacity>
                 </View>
             </View>
+            </View>
         );
     },
     onPressMessage(){
@@ -77,6 +82,13 @@ var XMGHome = React.createClass({
 });
 
 const homeStyles = StyleSheet.create({
+    outViewStyle:{
+        flexDirection:"column",
+        backgroundColor:'#ef5100',
+    },
+    outTopViewStyle:{
+        height:Platform.OS=="ios"?20:0,
+    },
     container: {
         flex: 1,
         backgroundColor: '#F5FCFF',
@@ -99,10 +111,10 @@ const homeStyles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 13,
         height: 28,
-        marginTop: 4,
-        paddingBottom: 7,
+        marginTop: Platform.OS=="ios"?6:4,
+        paddingBottom: Platform.OS=="ios"?0:7,
         textAlign: 'left',
-        fontSize: 12,
+        fontSize: 16,
         paddingLeft: 15,
     },
     navBarRightImageStyle: {

@@ -23,6 +23,7 @@ var XMGMore = React.createClass({
     render() {
         return (
             <View style={moreStyle.container}>
+
                 {this.renderHeaderNavBar()}
                 <ScrollView style={{marginBottom:0}}>
                     <View style={{marginTop:20,backgroundColor:'white'}}>
@@ -76,11 +77,16 @@ var XMGMore = React.createClass({
     },
     renderHeaderNavBar(){
         return (
+            <View style={moreStyle.outViewStyle}>
+                <View style={moreStyle.outTopViewStyle}>
+                </View>
             <View style={moreStyle.navbarStyle}>
+
                 <Text style={moreStyle.navTextStyle}>更多</Text>
                 <TouchableOpacity onPress={()=>this.onPressSetting} style={moreStyle.navRightStyle}>
                 <Image source={{uri:'icon_mine_setting'}} style={moreStyle.navImageStyle}/>
                 </TouchableOpacity>
+            </View>
             </View>
         );
     },
@@ -90,6 +96,13 @@ var XMGMore = React.createClass({
 });
 
 const moreStyle = StyleSheet.create({
+    outViewStyle:{
+        flexDirection:"column",
+        backgroundColor:'#ef5100',
+    },
+    outTopViewStyle:{
+        height:Platform.OS=="ios"?20:0,
+    },
     container:{
         flexDirection:'column',
         flex:1,

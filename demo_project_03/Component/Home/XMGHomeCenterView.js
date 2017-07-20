@@ -10,6 +10,8 @@ import {
     Text,
     View,
     Image,
+    TouchableOpacity,
+    Alert,
 } from 'react-native';
 
 var Dimensions = require('Dimensions');
@@ -31,15 +33,17 @@ var XMGHomeCenterView = React.createClass({
         var data = HomeTopMiddleData.dataLeft;
         return (
             //{"img1" : "mdqg", "img2" : "yyms", "title" : "探路组碳烤鱼", "price": "¥9.5", "sale": "再减3元"}
+            <TouchableOpacity activeOpacity={0.5} onPress={()=>{Alert.alert("点击","hello")}}>
             <View style={XMGHomeCenterViewStyle.leftCenterView}>
                 <Image source={{uri: data[0].img1}} style={XMGHomeCenterViewStyle.leftImageStyle}/>
                 <Image source={{uri: data[0].img2}} style={[XMGHomeCenterViewStyle.leftImageStyle,{marginTop:3}]}/>
-                <Text style={{fontSize: 14}}>{data[0].title}</Text>
+                <Text style={{fontSize: 14,color:'gray'}}>{data[0].title}</Text>
                 <View style={XMGHomeCenterViewStyle.leftBottomTextStyle}>
                     <Text style={{fontSize: 12,color:'#2bc6b7',marginTop:3}}>{data[0].price}</Text>
-                    <Text style={{fontSize: 12 ,color:'#f96d4a',marginTop:3}}>{data[0].sale}</Text>
+                    <Text style={{fontSize: 12 ,color:'#f96d4a',backgroundColor:'yellow',marginTop:3}}>{data[0].sale}</Text>
                 </View>
             </View>
+            </TouchableOpacity>
         );
     },
     getRightCenterView(){
@@ -53,32 +57,32 @@ var XMGHomeCenterView = React.createClass({
                     subTitle={data[i].subTitle}
                     rightImage={data[i].rightImage}
                     titleColor={data[i].titleColor}
+                    callBackFunc={this.callBackFuncAlert}
                 />
             )
         }
         return Views;
-
     },
-
+    callBackFuncAlert(title){
+        Alert.alert(title,title);
+    }
 });
 
 const XMGHomeCenterViewStyle = StyleSheet.create({
     container: {
         flexDirection: 'row',
         backgroundColor: 'white',
-        height:140,
+        height:150,
         justifyContent:'center',
         alignItems:'center',
         marginTop:10,
     },
     leftCenterView: {
         width: Swidth / 2,
-        padding: 5,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRightWidth:0.5,
-        borderRightColor:"#f0f0f0"
+        backgroundColor:'white',
     },
     rightCenterView: {
         width: Swidth / 2,
@@ -90,8 +94,9 @@ const XMGHomeCenterViewStyle = StyleSheet.create({
         alignItems: 'center',
     },
     leftImageStyle: {
-        width: 110,
+        width: 120,
         height: 38,
+        resizeMode:'contain',
     },
     instructions: {
         textAlign: 'center',

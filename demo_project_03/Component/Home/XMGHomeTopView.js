@@ -45,7 +45,7 @@ var XMGHomeTopView = React.createClass({
         for (var i = 0; i < 2; i++) {
             styles = (i === this.state.indexPage) ? {color: 'orange'} : {color: 'gray'};
             views.push(
-                <Text key={i} style={ [{marginLeft: 5, fontSize: 24}, styles]}>&bull;</Text>
+                <Text key={i} style={ [{fontSize: 24,backgroundColor:'red',backgroundColor:'rgba(0,0,0,0)'}, styles]}>&bull;</Text>//
             );
         }
         return views;
@@ -82,9 +82,10 @@ const homeTopViewStyle = StyleSheet.create({
     indicatorStyle: {
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center',
-        height: 10,
+        alignItems:'center',
+        height: 14,
         backgroundColor: 'white',
+        flex:1,
     },
 
     instructions: {

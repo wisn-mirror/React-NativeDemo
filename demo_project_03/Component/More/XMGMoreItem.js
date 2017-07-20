@@ -89,8 +89,8 @@ const MoreItemStyle = StyleSheet.create({
         color:'#353535',
     },
     navImageStyle:{
-        width: Platform.OS=='iso' ? 10:8,
-        height: Platform.OS=='iso' ? 13:13,
+        width: Platform.OS==='iso' ? 10:8,
+        height: Platform.OS==='iso' ? 13:13,
         marginRight:5,
     }
 });

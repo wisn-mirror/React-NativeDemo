@@ -7,10 +7,8 @@
 import React, {Component} from 'react';
 import {
     StyleSheet,
-    Text,
-    View,
-    Image,
     ListView,
+    Alert,
 } from 'react-native';
 
 var Dimensions = require('Dimensions');
@@ -47,8 +45,12 @@ var XMGHomeBottomView = React.createClass({
                 subTitle={rowData.subTitle}
                 rightImage={rowData.hotImage}
                 titleColor={this.props.colors[rowID]}
+                callBackFunc={this.callBackFuncAlert}
             />
         );
+    },
+    callBackFuncAlert(title){
+        Alert.alert(title,title);
     }
 
 });

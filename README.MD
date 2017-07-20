@@ -137,3 +137,9 @@ var TimerMixin=require('react-timer-mixin');
   npm install react-native-tab-navigator --save  
   yarn add  react-navigation
  npm i -g npm 
+
+
+
+Ios  command+D 
+大小 command + 1/2/3/4
+清除缓存： com+k
