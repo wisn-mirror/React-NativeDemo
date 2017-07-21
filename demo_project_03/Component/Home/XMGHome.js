@@ -25,6 +25,7 @@ var XMGHomeCenterView=require('./XMGHomeCenterView');
 var XMGHomeBottomView=require('./XMGHomeBottomView.js');
 var HomeHotData = require('../../LocalData/HomeHotData.json');
 var XMGHomeBottomCommentView=require('./XMGHomeBottomCommentView.js')
+var  XMGHomeYouLikeView=require("./XMGHomeYouLikeView");
 var XMGHome = React.createClass({
     render() {
         return (
@@ -40,6 +41,7 @@ var XMGHome = React.createClass({
                         DataArray={HomeHotData.bottomData}
                     />
                     <XMGHomeBottomCommentView/>
+                    <XMGHomeYouLikeView/>
                 </ScrollView>
             </View>
         );
