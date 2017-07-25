@@ -141,7 +141,6 @@ align-self*
 问题：
 
 报错：
-
 	AAPT err(Facade for 2108943713) : No Delegate set : lost message:libpng error: Not a PNG file
 	AAPT: libpng error: Not a PNG file
 	AAPT err(Facade for 218841101) : No Delegate set : lost message:libpng error: Not a PNG file
@@ -149,23 +148,35 @@ align-self*
 	AAPT err(Facade for 714762553) : No Delegate set : lost message:libpng error: Not a PNG file
 	Error: java.util.concurrent.ExecutionException: com.android.ide.common.process.ProcessException: 
 	:app:mergeDebugResources FAILED
-
 在build.gradle中android中添加：
-
  aaptOptions { cruncherEnabled = false   }
 
 
 
 报错“RCTBundleURLProvider.h” file not found
-
 从网上下载别人的ReactNative项目，打开iOS项目的时候，xcode会报错，提示：“RCTBundleURLProvider.h” file not found
 
 解决方法：
-
 打开Mac里面的终端，进入项目所在的文件夹目录；
-
 把项目里面的 node_modules 文件夹删除掉，然后执行 npm install 命令
-
 npm install安装完成后， 执行react-native upgrade命令
-
 最后重新打开Xcode,clean一下，应该就没有问题了，我的就是这么解决的。
+
+
+报错react-children-only-expected-to-receive-a-single-react-element-child-error-whe
+通过方法传递View要加入{...this.props}
+ <Component {...this.props}/>
+
+
+报错：'Navigator is deprecated and has been removed from this package. It can now be installed ' +
+'and imported from `react-native-deprecated-custom-components` instead of `react-native`. ' +
+'Learn about alternative navigation solutions at http://facebook.github.io/React-native/docs/navigation.html'
+这是因为版本升级到0.43以上的话，Navigator不能直接从react-native里面获取了，
+
+解决方案：
+npm install react-native-deprecated-custom-components
+--save
+然后在引用的地方
+import {Navigator}
+from react-native-deprecated-custom-components
+
