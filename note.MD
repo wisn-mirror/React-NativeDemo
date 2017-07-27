@@ -180,3 +180,34 @@ npm install react-native-deprecated-custom-components
 import {Navigator}
 from react-native-deprecated-custom-components
 
+问题：Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) 
+but got: object.
+1.用到的地方使用
+<Navigator.Navigator
+initialRoute={{ name: defaultName, component: defaultComponent }}
+configureScene={(route) => {
+return Navigator.Navigator.SceneConfigs.VerticalDownSwipeJump;
+}}
+renderScene={(route, navigator) => {
+let Component = route.component;
+return <Component {...route.params} navigator={navigator} />
+}} />
+2或者使用这种方式：
+import CustomerComponents, {Navigator} 
+from 'react-native-deprecated-custom-components';
+<Navigator></Navigator>
+
+
+问题，使用react-native-deprecated-custom-components传值问题：
+renderScene={(route, navigator) => {
+let Component = route.component;
+return <Component {...route.wisn} navigator={navigator}/>;
+}}
+其中...route.wisn 中的wisn 在以后的传值中要是用同一字段，比如：
+this.props.navigator.push({
+component: CustomKeyPage,
+wisn:{
+...this.props,
+isRemoveKeyValue: true,
+},
+})
