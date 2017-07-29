@@ -211,3 +211,7 @@ wisn:{
 isRemoveKeyValue: true,
 },
 })
+
+
+报错提示：Cannot update during an existing state transition (such as within render or another component's constructor). Render methods should be a pure function of props and state;
+原因：props和states在渲染的时候更改了。
