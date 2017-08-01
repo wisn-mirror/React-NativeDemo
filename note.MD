@@ -215,3 +215,11 @@ isRemoveKeyValue: true,
 
 报错提示：Cannot update during an existing state transition (such as within render or another component's constructor). Render methods should be a pure function of props and state;
 原因：props和states在渲染的时候更改了。
+
+
+不能传值问题
+/*this.state.data.map(function (item, index, input) {
+return item.checked?  <PopularBar
+tabLabel={item.name}
+key={index}  {...this.props}/>:null;
+})*/
