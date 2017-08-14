@@ -25,7 +25,8 @@ npm install react-native-tab-navigator --save
 yarn add  react-navigation
 npm i -g npm 
 
-
+console.disableYellowBox = true;
+消除当前组件里的所有黄色警告
 
 Ios  command+D 
 大小 command + 1/2/3/4
@@ -223,3 +224,55 @@ return item.checked?  <PopularBar
 tabLabel={item.name}
 key={index}  {...this.props}/>:null;
 })*/
+
+
+
+for循环里的length是length而不是length() 
+for(var i = 0, len = items.length; i<len; i++)
+favoriteDao.saveFavoriteItem(item.id.toString(),JSON.stringify(item));
+
+
+
+TrendingPage:
+var favoriteDao = new FavoriteDao(FlAG_STORAGE.flag_trending) 【坑了我1个小时，太傻比了】
+
+
+TrendingPageCell 和 PopularPageCell：【这个视频里很难发现，原来不是这样，在后面的视频里改成这个样子了】
+setFavoriteState(isFavorite){
+this.props.projectModel.isFavorite = isFavorite;
+this.setState({
+isFavorite:isFavorite,
+favoriteIcon:isFavorite?require('../../res/images/ic_star.png'):require('../../res/images/ic_star_navbar.png')
+})
+}
+
+
+在详情页：
+构造函数
+this.favoriteDao1 = new FavoriteDao(this.props.flag);
+而不是
+this.favoriteDao1 = new FavoriteDao(this.props.projectModel.flag); 
+
+
+点击导航栏右上角更新数据库并发送通知
+onRightButtonClick(){
+
+var projectModel = this.props.projectModel;
+this.setFavoriteState(projectModel.isFavorite =!projectModel.isFavorite);
+var key = projectModel.item.fullName?projectModel.item.fullName:projectModel.item.id.toString();
+if(projectModel.isFavorite){
+this.favoriteDao1.saveFavoriteItem(key,JSON.stringify(projectModel.item));
+}else {
+this.favoriteDao1.removeFavoriteItem(key);
+}
+
+if (this.props.flag === FlAG_STORAGE.flag_popular){
+DeviceEventEmitter.emit('favoriteChanged_popular');
+}else if (this.props.flag === FlAG_STORAGE.flag_trending){
+DeviceEventEmitter.emit('favoriteChanged_trending');
+}else {
+//没有符合的页面，不发送通知
+}
+【我用通知处理了，应该还有更好的方法】
+}
+
