@@ -1,5 +1,6 @@
 package com.demo_native;
 
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -58,5 +59,10 @@ public class RnModule extends ReactContextBaseJavaModule implements LifecycleEve
     @ReactMethod
     public void showToast(){
         Toast.makeText(getCurrentActivity(),"hello reactNative",Toast.LENGTH_SHORT).show();
+    }
+    @ReactMethod
+    public void startNativeTest(){
+        Intent intent=new Intent(getCurrentActivity(),NativeTestActivity.class);
+        getCurrentActivity().startActivity(intent);
     }
 }

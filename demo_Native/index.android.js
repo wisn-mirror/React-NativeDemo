@@ -4,47 +4,15 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-    TouchableOpacity
+    AppRegistry,
+    NativeModules
 } from 'react-native';
-import RnModule from "./js/RnModule";
-export default class demo_Native extends Component {
-    _onPress(){
-        RnModule.showToast();
-    }
-    render() {
-        return (
-            <View style={styles.container}>
-              <TouchableOpacity onPress={()=>this._onPress()}>
-                <Text>显示原生toast</Text>
-              </TouchableOpacity>
-            </View>
-        );
-    }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+export const RnModule = NativeModules.RnModule;
+import NativeTest from "./js/view/NativeTest";
+import demo_Native from "./js/view/Main";
 
 AppRegistry.registerComponent('demo_Native', () => demo_Native);
+AppRegistry.registerComponent('NativeTest', () => NativeTest);

@@ -6,37 +6,28 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
     TouchableOpacity
 } from 'react-native';
 import {RnModule } from "../../index.android";
-export default class NativeTest extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-         message:"";
-      };
+export default class demo_Native extends Component {
+    _onPressShowToast(){
+        RnModule.showToast();
     }
-    _onPress(){
-
+    _onPressStartNative(){
+        RnModule.startNativeTest();
     }
-    componentDidMount(){
-
-    }
-
     render() {
         return (
             <View style={styles.container}>
-              <TouchableOpacity onPress={()=>this._onPress()}>
-                <Text>调用相机</Text>
+              <TouchableOpacity onPress={()=>this._onPressShowToast()}>
+                <Text>show Native toast</Text>
               </TouchableOpacity>
-                <TouchableOpacity onPress={()=>this._onPress()}>
-                    <Text>显示原生toast</Text>
+                <TouchableOpacity onPress={()=>this._onPressStartNative()}>
+                    <Text>start Native test</Text>
                 </TouchableOpacity>
-                <Text>原生消息:{this.state.message}</Text>
             </View>
         );
     }
