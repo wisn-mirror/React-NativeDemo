@@ -13,7 +13,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import RnModule from "./js/RnModule";
-export default class demo_Native extends Component {
+export default class NativeTest extends Component {
     _onPress(){
         RnModule.showToast();
     }
