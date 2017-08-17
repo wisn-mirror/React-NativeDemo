@@ -233,10 +233,15 @@ public class RnModule extends ReactContextBaseJavaModule implements LifecycleEve
         }else if(requestCode==REQUEST_CODE_GALLERY){
             //请求相册
             if (resultCode == Activity.RESULT_OK) {
+                Log.e(TAG,"RESULT_OK");
                 activity.startActivityForResult(cropImage(data.getData()), REQUEST_CODE_CROP);
             } else if (resultCode == Activity.RESULT_CANCELED) {
+                Log.e(TAG,"RESULT_CANCELED"+mPromise);
                 mPromise.resolve(null);
                 new File(mFullPath).delete();
+            }else{
+                Log.e(TAG,"RESULT_other"+resultCode);
+
             }
         }else if(requestCode==REQUEST_CODE_CROP){
             //剪切相册
