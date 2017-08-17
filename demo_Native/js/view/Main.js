@@ -23,10 +23,10 @@ export default class demo_Native extends Component {
         return (
             <View style={styles.container}>
               <TouchableOpacity onPress={()=>this._onPressShowToast()}>
-                <Text>show Native toast</Text>
+                <Text style={{marginTop:30 ,fontSize:40}}>show Native toast</Text>
               </TouchableOpacity>
                 <TouchableOpacity onPress={()=>this._onPressStartNative()}>
-                    <Text>start Native test</Text>
+                    <Text style={{marginTop:30 ,fontSize:40}}>start Native test</Text>
                 </TouchableOpacity>
             </View>
         );
