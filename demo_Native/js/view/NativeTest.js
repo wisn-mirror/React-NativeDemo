@@ -45,7 +45,7 @@ export default class NativeTest extends Component {
         // })
         RnModule.selectPhoto()
             .then(result => {
-                console.log("test"+result);
+                console.log("test" + result);
                 if (result) {
                     this.setState({
                         headImageUri: result,
@@ -72,18 +72,18 @@ export default class NativeTest extends Component {
         RnModule.callMathAdd(parseInt(this.state.sum), 1, (result) => this.setState(result));
     }
 
-    _onPressStopEvent() {
-        RnModule.stopMessage();
-    }
-
     _onPressMessage() {
         RnModule.getCallBack((result) => this.setState(result));
     }
 
+    _onPressStopEvent() {
+        RnModule.stopMessage();
+    }
+
+
     async _onPressCallGamera() {
         RnModule.callCamera()
             .then(result => {
-                console.log("test"+result);
                 if (result) {
                     this.setState({
                         headImageUri: result,
@@ -95,15 +95,18 @@ export default class NativeTest extends Component {
                 }
             })
             .catch(error => {
-                console.log("error" + error);
                 this.setState({
                     message: "error" + error,
                 })
             })
-        /*this.setState({
-            headImageUri: await RnModule.callCamera(),
-        })*/
     }
+
+
+    /*this.setState({                             console.log("error" + error);
+   console.log("test" + result);
+
+           headImageUri: await RnModule.callCamera(),
+       })*/
 
     render() {
         return (

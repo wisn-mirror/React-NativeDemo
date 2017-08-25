@@ -49,6 +49,9 @@ public class RnModule extends ReactContextBaseJavaModule implements LifecycleEve
     private Uri mUri = null;
     private String mFullPath = null;
 
+    /**
+     * RnModule
+     */
     private final  static  String MODULE="RnModule";
     private final  static  String TAG="RnModule";
     public RnModule(ReactApplicationContext reactContext) {

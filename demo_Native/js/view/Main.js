@@ -4,14 +4,18 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component,PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
   View,
-    TouchableOpacity
+    TouchableOpacity,
+    processColor,
+    requireNativeComponent,
 } from 'react-native';
 import {RnModule } from "../../index.android";
+import MyTextView from "./MyTextView";
+
 export default class demo_Native extends Component {
     _onPressShowToast(){
         RnModule.showToast();
@@ -22,6 +26,10 @@ export default class demo_Native extends Component {
     render() {
         return (
             <View style={styles.container}>
+                {/*<MyTextView
+                    color='#ff0000'
+                    text='你好，TextView'
+                />*/}
               <TouchableOpacity onPress={()=>this._onPressShowToast()}>
                 <Text style={{marginTop:30 ,fontSize:40}}>show Native toast</Text>
               </TouchableOpacity>

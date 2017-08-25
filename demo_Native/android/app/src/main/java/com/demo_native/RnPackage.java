@@ -30,6 +30,8 @@ public class RnPackage implements ReactPackage {
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+        List<ViewManager> viewManagers=new ArrayList<>();
+        viewManagers.add(new MyTextViewManager());
+        return viewManagers;
     }
 }
