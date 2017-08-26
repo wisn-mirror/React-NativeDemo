@@ -32,6 +32,11 @@ public class RnPackage implements ReactPackage {
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         List<ViewManager> viewManagers=new ArrayList<>();
         viewManagers.add(new MyTextViewManager());
+        viewManagers.add(new CircleManager());
         return viewManagers;
+//        return Arrays.<ViewManager>asList(
+////                new MyTextViewManager()
+//                new CircleManager()
+//        );
     }
 }

@@ -1,7 +1,7 @@
 package com.demo_native;
+import android.util.Log;
 
-import android.widget.TextView;
-
+import com.demo_native.view.MyView;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
@@ -10,27 +10,31 @@ import com.facebook.react.uimanager.annotations.ReactProp;
  * Created by wisn on 2017/8/25.
  */
 
-public class MyTextViewManager extends SimpleViewManager<TextView> {
+public class MyTextViewManager extends SimpleViewManager<MyView> {
     @Override
     public String getName() {
-        return "MyTextViewManager";
+        return "MyView";
     }
 
     @Override
-    protected TextView createViewInstance(ThemedReactContext reactContext) {
-        TextView myTextView = new TextView(reactContext);
-        myTextView.setText("默认值");
+    protected MyView createViewInstance(ThemedReactContext reactContext) {
+        MyView myTextView = new MyView(reactContext);
         return myTextView;
     }
 
     @ReactProp(name = "color")
-    public void setColor(TextView textView, Integer color) {
-       // textView.setTextColor(color);
+    public void setColor(MyView textView, Integer color) {
+        textView.setColor(color);
     }
 
     @ReactProp(name = "text")
-    public void setText(TextView textView, String text) {
-
-        //textView.setText(text);
+    public void setText(MyView textView, String text) {
+        Log.d("setText", text);
+        textView.setText(text);
+    }
+    @ReactProp(name = "textsize")
+    public void setTextSize(MyView textView, Integer textSize) {
+        Log.d("setText", ""+textSize);
+        textView.setTextSize(textSize);
     }
 }

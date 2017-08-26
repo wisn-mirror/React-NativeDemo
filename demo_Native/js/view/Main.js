@@ -10,12 +10,12 @@ import {
   Text,
   View,
     TouchableOpacity,
-    processColor,
     requireNativeComponent,
+    processColor,
 } from 'react-native';
 import {RnModule } from "../../index.android";
-import MyTextView from "./MyTextView";
-
+import RCTCircle from "./Circle";
+import MyView from "./MyTextView";
 export default class demo_Native extends Component {
     _onPressShowToast(){
         RnModule.showToast();
@@ -26,10 +26,17 @@ export default class demo_Native extends Component {
     render() {
         return (
             <View style={styles.container}>
-                {/*<MyTextView
-                    color='#ff0000'
-                    text='你好，TextView'
-                />*/}
+                <MyView
+                    style={{width: 100, height: 100}}
+                    color={processColor('#fc83ff')}
+                    textsize={20}
+                     text='你好，TextView'
+                />
+                <RCTCircle
+                    style={{width: 100, height: 100}}
+                    color={processColor('#ff0000')}
+                    radius={50}
+                    />
               <TouchableOpacity onPress={()=>this._onPressShowToast()}>
                 <Text style={{marginTop:30 ,fontSize:40}}>show Native toast</Text>
               </TouchableOpacity>
