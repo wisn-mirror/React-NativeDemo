@@ -10,6 +10,10 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.demo_native.DensityUtils;
+import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.uimanager.events.RCTEventEmitter;
 
 /**
  * Created by wisn on 2017/8/26.
@@ -83,7 +87,8 @@ public class MyView extends View {
     public void setTextSize(Integer textSize){
         mTextSize=  DensityUtils.dip2px(mContext1,textSize);
         mPaint.setTextSize(mTextSize);
-//        textSize;
         invalidate();
     }
+
+
 }
