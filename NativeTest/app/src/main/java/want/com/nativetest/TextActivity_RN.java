@@ -27,13 +27,13 @@ public class TextActivity_RN extends AppCompatActivity implements DefaultHardwar
                                                     .setBundleAssetName("index.android.bundle")
                                                     .setJSMainModuleName("index.android")
                                                     .addPackage(new MainReactPackage())
-                                                    .addPackage(new TextPackage())
+//                                                    .addPackage(new TextPackage())
                                                     .setUseDeveloperSupport(com.facebook.react.BuildConfig.DEBUG)
                                                     .setInitialLifecycleState(LifecycleState.RESUMED)
                                                     .build();
 
         mReactRootView.startReactApplication(
-                mReactInstanceManager, "OrderFillInComponent", null);
+                mReactInstanceManager, "TestActivity", null);
 
         setContentView(mReactRootView);
 

@@ -1,4 +1,4 @@
-import React from'react';
+import React from 'react';
 import {
     AppRegistry,
     StyleSheet,
@@ -11,7 +11,18 @@ import {
     BackHandler,
     DeviceEventEmitter
 } from 'react-native';
-import { SCREEN_WIDTH, SCREEN_HEIGHT } from '../../index.android.js';
-export  class TestActivity  extends React.Component{
+import {SCREEN_WIDTH, SCREEN_HEIGHT} from '../../index.android.js';
 
+export class TestActivity extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    render() {
+        return (<View>
+            <Text> buttondddd</Text>
+
+        </View>);
+    }
 }
