@@ -18,9 +18,15 @@ export default class PercentageView extends Component {
 
     render() {
         return (
-            <View style={[{flexDirection:"row",justifyContent:"flex-start",alignItems:"center"},this.props.style]} >
-                <View  style={[{width:(this.props.Percent*(this.props.style.width-40)),height:this.props.style.height,marginTop:2},this.props.PercentStyle]}/>
-                <Text style={{marginLeft:8,fontSize:20}}>{parseInt(this.props.Percent*this.props.style.width)}</Text>
+            <View
+                style={[{flexDirection: "row", justifyContent: "flex-start", alignItems: "center"}, this.props.style]}>
+                <View style={[{
+                    width: (this.props.Percent * (this.props.style.width - 40)),
+                    height: this.props.style.height,
+                    marginTop: 2
+                }, this.props.PercentStyle]}/>
+                <Text
+                    style={{marginLeft: 8, fontSize: 20}}>{parseInt(this.props.Percent * this.props.style.width)}</Text>
             </View>
         );
     }

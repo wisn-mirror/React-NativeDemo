@@ -11,7 +11,7 @@ export default class DashLine extends React.Component{
     render(){
         const path = Path()
             .moveTo(1,1)
-            .lineTo(this.props.style.width,1);
+            .lineTo(parseInt(this.props.style.width),1);
 
         return(
             <View style={this.props.style}>
