@@ -28,6 +28,7 @@ import RatingBarView from "./component/RatingBarView.js";
 import ScrollViewTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view';
 
 import Dimensions from 'Dimensions';
+
 export const SCREEN_WIDTH = Dimensions.get('window').width;
 export const SCREEN_HEIGHT = Dimensions.get('window').height;
 export default class demo_Native extends Component {
@@ -62,20 +63,30 @@ export default class demo_Native extends Component {
     _onPressStartNative() {
         RnModule.startNativeTest();
     }
-    callBack(number){
-        Alert.alert(number+"  ");
+
+    callBack(number) {
+        Alert.alert(number + "  ");
     }
 
     render() {
-        // return (<LoginComponent />    );
-        return (<RatingBarView
-                style={{backgroundColor:'white'}}
-                title="卡顿"
-                current={2}
-                RatingChangeLister={(result)=>this.callBack(result)}
+        // return (   );
+        return (
+            <View>
+                <RatingBarView
+                    style={{backgroundColor:'white'}}
+                    title="卡顿"
+                    current={2}
+                    RatingChangeLister={(result)=>this.callBack(result)}
                 />
+                <TouchableOpacity onPress={() => this._onPressShowToast()}>
+                    <Text style={{marginTop: 30, fontSize: 40}}>show Native toast</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => this._onPressStartNative()}>
+                    <Text style={{marginTop: 30, fontSize: 40}}>start Native test</Text>
+                </TouchableOpacity>
+            </View>
         );
-           {/* <View style={styles.container}>
+        {/* <View style={styles.container}>
                 {this.getItemView("终端摆放次数达成率", "应拜访终端数", "实际拜访终端数"
                 , "次数", 0.1, "#fae62e", require('./component/ji_background_top.png'))}
                 <DashLine
@@ -99,30 +110,43 @@ export default class demo_Native extends Component {
                         isLast={true}
                     /></View>
 
-                </ScrollViewTabView>*/}
-                {/*<MyTextView*/}
-                {/*{...this.props}*/}
-                {/*style={{width: 100, height: 100}}*/}
-                {/*color={processColor('#fc83ff')}*/}
-                {/*textsize={20}*/}
-                {/*text='你好，TextView'*/}
-                {/*onChangeMessage={(event) => this._onChange(event)}*/}
-                {/*// onChangeMessage={(event)=>{*/}
-                {/*//     ToastAndroid.show(event.nativeEvent.message, ToastAndroid.SHORT);*/}
-                {/*// }}*/}
-                {/*/>*/}
-                {/*<RCTCircle*/}
-                {/*style={{width: 100, height: 100}}*/}
-                {/*color={processColor('#ff0000')}*/}
-                {/*radius={50}*/}
-                {/*/>*/}
-                {/*<TouchableOpacity onPress={() => this._onPressShowToast()}>
-                    <Text style={{marginTop: 30, fontSize: 40}}>show Native toast</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this._onPressStartNative()}>
-                    <Text style={{marginTop: 30, fontSize: 40}}>start Native test</Text>
-                </TouchableOpacity>*/}
-            {/*</View>*/}
+                </ScrollViewTabView>*/
+        }
+        {/*<MyTextView*/
+        }
+        {/*{...this.props}*/
+        }
+        {/*style={{width: 100, height: 100}}*/
+        }
+        {/*color={processColor('#fc83ff')}*/
+        }
+        {/*textsize={20}*/
+        }
+        {/*text='你好，TextView'*/
+        }
+        {/*onChangeMessage={(event) => this._onChange(event)}*/
+        }
+        {/*// onChangeMessage={(event)=>{*/
+        }
+        {/*//     ToastAndroid.show(event.nativeEvent.message, ToastAndroid.SHORT);*/
+        }
+        {/*// }}*/
+        }
+        {/*/>*/
+        }
+        {/*<RCTCircle*/
+        }
+        {/*style={{width: 100, height: 100}}*/
+        }
+        {/*color={processColor('#ff0000')}*/
+        }
+        {/*radius={50}*/
+        }
+        {/*/>*/
+        }
+
+        {/*</View>*/
+        }
 
     }
 }

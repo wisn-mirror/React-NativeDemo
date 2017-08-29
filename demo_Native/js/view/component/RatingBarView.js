@@ -10,7 +10,6 @@ import {
 export default class RatingBarView extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             current: (this.props.current) ? this.props.current : 0,
         };
@@ -51,9 +50,7 @@ export default class RatingBarView extends Component {
         } else {
             for (var i = 0; i < 5; i++) {
                 if (i < this.state.current) {
-                    views.push(
-                        this.getImage(i, require("../loginimg/qf_sel_wantwanthead.png"))
-                    )
+                    views.push(this.getImage(i, require("../loginimg/qf_sel_wantwanthead.png")))
                 } else {
                     views.push(this.getImage(i, require("../loginimg/qf_nor_wantwanthead.png")))
                 }
@@ -63,8 +60,8 @@ export default class RatingBarView extends Component {
     }
 
     getImage(key, image) {
-        return (<TouchableOpacity onPress={() => this._onChangeItem(key+1)}>
-            <Image key={key} style={ratingStyle.imageStyle}
+        return (<TouchableOpacity key={key} onPress={() => this._onChangeItem(key + 1)}>
+            <Image style={ratingStyle.imageStyle}
                    source={image}/>
         </TouchableOpacity>);
     }
@@ -74,7 +71,7 @@ const ratingStyle = StyleSheet.create({
     imageStyle: {
         width: 35,
         height: 35,
-        margin: 8,
+        margin: 9,
     },
     outViewStyle: {
         flexDirection: "column",

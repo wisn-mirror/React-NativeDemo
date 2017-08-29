@@ -8,6 +8,7 @@ import {
     TouchableOpacity,
     TextInput,
     ScrollView,
+    Alert,
     NativeModules
 } from 'react-native';
 // import {SCREEN_WIDTH, SCREEN_HEIGHT} from '../../../index.android.js';
@@ -21,7 +22,9 @@ export default class LoginComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            secureTextEntry: true,
+            account:'',
+            password:'',
         };
     }
 
@@ -36,19 +39,29 @@ export default class LoginComponent extends React.Component {
                     <View style={loginstyles.contentStyle}>
                         <Image style={loginstyles.inputImageStyle} resizeMode='stretch'
                                source={require("../loginimg/button_password.png")}>
-                            <TextInput style={loginstyles.inputTextStyle} placeholder={'请输入账号'}
+                            <TextInput ref="account" style={loginstyles.inputTextStyle} placeholder={'请输入账号'}
                                        selectTextOnFocus={true}
-                                       underlineColorAndroid='transparent'/>
-                            <Image resizeMode='stretch' style={loginstyle.iconStyle}
-                                   source={require("../loginimg/icon_close.png")}/>
+                                       underlineColorAndroid='transparent'
+                                       onChangeText={(text) => {this.setState({account:text})}}
+                                       value = {this.state.account}
+                            />
+                            <TouchableOpacity onPress={() => this._clearAccount()}>
+                                <Image resizeMode='stretch' style={loginstyles.iconStyle}
+                                       source={require("../loginimg/icon_close.png")}/>
+                            </TouchableOpacity>
                         </Image>
                         <Image style={loginstyles.inputImageStyle} resizeMode='stretch'
                                source={require("../loginimg/button_password.png")}>
                             <TextInput style={loginstyles.inputTextStyle} placeholder={'请输入密码'}
                                        selectTextOnFocus={true}
-                                       underlineColorAndroid='transparent'/>
-                            <Image resizeMode='stretch' style={{marginLeft: 10, width: 15, height: 10}}
-                                   source={require("../loginimg/icon_hide.png")}/>
+                                       secureTextEntry={this.state.secureTextEntry}
+                                       underlineColorAndroid='transparent'
+                                       onChangeText={(text) => {this.setState({password:text})}}
+                                       value = {this.state.password}                            />
+                            <TouchableOpacity onPress={() => this._showPassword()}>
+                                <Image resizeMode='stretch' style={{marginLeft: 10, width: 15, height: 10}}
+                                       source={require("../loginimg/icon_hide.png")}/>
+                            </TouchableOpacity>
                         </Image>
                         <TouchableOpacity activeOpacity={0.5} onPress={this._loginPress()}>
                             <Image style={loginstyles.loginButtonStyle} resizeMode='stretch'
@@ -65,8 +78,19 @@ export default class LoginComponent extends React.Component {
         );
     }
 
+
     _loginPress() {
 
+    }
+
+    _showPassword() {
+        this.setState({
+            secureTextEntry: !this.state.secureTextEntry,
+        });
+    }
+
+    _clearAccount() {
+        this.setState({account:""});
     }
 }
 
@@ -79,7 +103,7 @@ const loginstyles = StyleSheet.create({
         width: SCREEN_WIDTH,
         height: SCREEN_HEIGHT / 2
     },
-    contentStyle:{
+    contentStyle: {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
@@ -99,7 +123,7 @@ const loginstyles = StyleSheet.create({
         marginRight: 40,
         marginLeft: 40
     },
-    iconStyle:{
+    iconStyle: {
         marginLeft: 10,
         width: 15,
         height: 15

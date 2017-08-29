@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import {RnModule} from "../../index.android";
 import MyImage from "./MyImage";
+import LoginComponent from "./component/LoginComponent";
 
 export default class NativeTest extends Component {
     constructor(props) {
@@ -107,8 +108,10 @@ export default class NativeTest extends Component {
 
            headImageUri: await RnModule.callCamera(),
        })*/
-
     render() {
+        return (<LoginComponent/>);
+    }
+    /*render() {
         return (
             <View style={styles.container}>
                 <TouchableOpacity onPress={() => this._onPressAdd()}>
@@ -137,7 +140,7 @@ export default class NativeTest extends Component {
                 <Text style={{marginTop: 10, fontSize: 20}}>{this.state.sum}原生event:{this.state.event}</Text>
             </View>
         );
-    }
+    }*/
 
 
 }
