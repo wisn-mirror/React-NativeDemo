@@ -10,7 +10,7 @@ import Dimensions from 'Dimensions';
 
 export const SCREEN_WIDTH = Dimensions.get('window').width;
 export const SCREEN_HEIGHT = Dimensions.get('window').height;
-const week = ['日', '一', '二', '三', '四', '五', '六']
+const week = ['日', '一', '二', '三', '四', '五', '六'];
 export default class CalendarView extends Component {
     constructor(props) {
         super(props);
@@ -30,6 +30,8 @@ export default class CalendarView extends Component {
         year: PropTypes.number,
         //指定月 不传值默认本月
         month: PropTypes.number,
+        //监听选择事件
+        selectOnListener:PropTypes.func,
     }
 
     componentDidMount() {
@@ -129,6 +131,9 @@ export default class CalendarView extends Component {
         this.setState({
             select: data,
         })
+        if(this.props.selectOnListener){
+            this.props.selectOnListener(data);
+        }
     }
 
     getTitleView() {

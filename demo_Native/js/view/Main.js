@@ -71,8 +71,11 @@ export default class demo_Native extends Component {
             <View>
 
                 <CalendarView
-                    /*year={2017}
-                    month={6}*/
+                    year={2017}
+                    month={8}
+                    selectOnListener={(data)=>{
+                      Alert.alert("选择",""+data);
+                    }}
                 />
 
                {/* <MyTextView
