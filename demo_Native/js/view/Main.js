@@ -69,9 +69,10 @@ export default class demo_Native extends Component {
         // return (   );
         return (
             <View>
+
                 <CalendarView
-                    year={2017}
-                    month={12}
+                    /*year={2017}
+                    month={6}*/
                 />
 
                {/* <MyTextView

@@ -15,8 +15,8 @@ export default class CalendarView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            year: this.props.year,
-            month: this.props.month,
+            year: this.props.year ? this.props.year : null,
+            month: this.props.month ? this.props.month : null,
             isShow: true,
             isShowStr: '收起',
             select: -1,
@@ -36,6 +36,16 @@ export default class CalendarView extends Component {
         this.setState({
             select: this.mGetTodyDate(),
         });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        //动态更新
+        if (this.state.year !== nextProps.year || this.state.month !== nextProps.month) {
+            this.setState({
+                year: nextProps.year,
+                month: nextProps.month,
+            })
+        }
     }
 
     _PressIsShow() {
@@ -153,9 +163,9 @@ export default class CalendarView extends Component {
      */
     mGetTodyDate() {
         var d = new Date();
-        if (d.getYear() === this.state.year && (d.getMonth() + 1) === this.state.month) {
+        if (this.state.year === null||this.state.month === null  || (d.getFullYear() === this.state.year && (d.getMonth() + 1) === this.state.month)) {
             return d.getDate();
-        } else {
+        }else {
             return -1;
         }
     }
