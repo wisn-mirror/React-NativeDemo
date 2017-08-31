@@ -28,7 +28,6 @@ public class MyTextViewManager extends SimpleViewManager<MyView> {
         myTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(reactContext,"shijai",Toast.LENGTH_SHORT).show();
                 onReceiveNativeEvent(myTextView,reactContext);
             }
         });
@@ -49,12 +48,10 @@ public class MyTextViewManager extends SimpleViewManager<MyView> {
 
     @ReactProp(name = "text")
     public void setText(MyView textView, String text) {
-        Log.d("setText", text);
         textView.setText(text);
     }
     @ReactProp(name = "textsize")
     public void setTextSize(MyView textView, Integer textSize) {
-        Log.d("setText", ""+textSize);
         textView.setTextSize(textSize);
     }
 }

@@ -25,6 +25,7 @@ import PercentageView from "./component/PercentageView";
 import DashLine from "./component/DashLine";
 import LoginComponent from "./component/LoginComponent";
 import RatingBarView from "./component/RatingBarView.js";
+import CalendarView from "./component/CalendarView.js";
 import ScrollViewTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view';
 
 import Dimensions from 'Dimensions';
@@ -40,10 +41,6 @@ export default class demo_Native extends Component {
 
     _onChange(event) {
         Alert.alert("" + event.nativeEvent.message);
-        // if (!this.props.onChangeMessage) {
-        //     return;
-        // }
-        // this.props.onChangeMessage(event.nativeEvent.message);
     }
 
     componentDidMount() {
@@ -72,9 +69,20 @@ export default class demo_Native extends Component {
         // return (   );
         return (
             <View>
+                <CalendarView
+                />
+
+               {/* <MyTextView
+                    {...this.props}
+                    style={{width: 400, height: 100}}
+                    color={processColor('#fc83ff')}
+                    textsize={20}
+                    text='你好，TextView'
+                    // onChangeMessage={(event) => this._onChange(event)}
+                    />*/}
                 <RatingBarView
                     style={{backgroundColor:'white'}}
-                    title="卡顿"
+                    title="哈哈哈"
                     current={2}
                     RatingChangeLister={(result)=>this.callBack(result)}
                 />
@@ -86,68 +94,6 @@ export default class demo_Native extends Component {
                 </TouchableOpacity>
             </View>
         );
-        {/* <View style={styles.container}>
-                {this.getItemView("终端摆放次数达成率", "应拜访终端数", "实际拜访终端数"
-                , "次数", 0.1, "#fae62e", require('./component/ji_background_top.png'))}
-                <DashLine
-                style={{width: SCREEN_WIDTH - 45, backgroundColor: 'white', marginLeft: 20, marginRight: 20}}/>
-                {this.getItemView("终端摆放次数达成率", "应拜访终端数", "实际拜访终端数"
-                , "次数", 0.2, "#fae62e", require('./component/ji_background_between.png'))}
-                <DashLine
-                style={{width: SCREEN_WIDTH - 45, backgroundColor: 'white', marginLeft: 20, marginRight: 20}}/>
-                {this.getItemView("终端摆放次数达成率", "应拜访终端数", "实际拜访终端数"
-                , "次数", 0.6, "#fae62e", require(''))}
-                <ScrollViewTabView
-                    tabBarBackgroundColor='white'
-                    tabBarActiveTextColor='#002D00'
-                    tabBarInactiveTextColor="#002D00"
-                    tabBarUnderlineStyle={{backgroundColor: '#5BD672'}}
-                    renderTabBar={() => <ScrollableTabBar/>}
-                >
-                    <View tabLabel={"本月作业指标达成"}><OperationalTab
-                        isLast={false}/></View>
-                    <View tabLabel={"本月作业指标达成"}><OperationalTab
-                        isLast={true}
-                    /></View>
-
-                </ScrollViewTabView>*/
-        }
-        {/*<MyTextView*/
-        }
-        {/*{...this.props}*/
-        }
-        {/*style={{width: 100, height: 100}}*/
-        }
-        {/*color={processColor('#fc83ff')}*/
-        }
-        {/*textsize={20}*/
-        }
-        {/*text='你好，TextView'*/
-        }
-        {/*onChangeMessage={(event) => this._onChange(event)}*/
-        }
-        {/*// onChangeMessage={(event)=>{*/
-        }
-        {/*//     ToastAndroid.show(event.nativeEvent.message, ToastAndroid.SHORT);*/
-        }
-        {/*// }}*/
-        }
-        {/*/>*/
-        }
-        {/*<RCTCircle*/
-        }
-        {/*style={{width: 100, height: 100}}*/
-        }
-        {/*color={processColor('#ff0000')}*/
-        }
-        {/*radius={50}*/
-        }
-        {/*/>*/
-        }
-
-        {/*</View>*/
-        }
-
     }
 }
 

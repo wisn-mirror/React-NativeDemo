@@ -108,10 +108,10 @@ export default class NativeTest extends Component {
 
            headImageUri: await RnModule.callCamera(),
        })*/
-    render() {
-        return (<LoginComponent/>);
-    }
     /*render() {
+        return (<LoginComponent/>);
+    }*/
+    render() {
         return (
             <View style={styles.container}>
                 <TouchableOpacity onPress={() => this._onPressAdd()}>
@@ -140,7 +140,7 @@ export default class NativeTest extends Component {
                 <Text style={{marginTop: 10, fontSize: 20}}>{this.state.sum}原生event:{this.state.event}</Text>
             </View>
         );
-    }*/
+    }
 
 
 }

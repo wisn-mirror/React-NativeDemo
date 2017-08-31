@@ -11,7 +11,7 @@ var MyView = requireNativeComponent('MyView', {
         textsize: PropTypes.number,
         text: PropTypes.string,
         onChangeMessage: React.PropTypes.func,
-        ...View.propTypes // 包含默认的View的属性
+        ...View.propTypes
     }
 }, {
     nativeOnly: {onChange: true}

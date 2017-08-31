@@ -20,12 +20,31 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
  */
 
 public class MyView extends View {
+
+    public void setColor(Integer color) {
+        mPaint.setColor(color);
+        invalidate();
+    }
+
+    public void setText(String text) {
+        mText = text;
+        invalidate();
+    }
+
+    public void setTextSize(Integer textSize){
+        mTextSize=  DensityUtils.dip2px(mContext1,textSize);
+        mPaint.setTextSize(mTextSize);
+        invalidate();
+    }
+
+
     private String mText = "textSize";
     private float mTextSize = 100;
     private int mTextColor = Color.BLACK;
     private Paint mPaint;
     private Rect mRect;
     private Context mContext1;
+
 
     public MyView(Context context) {
         super(context);
@@ -41,10 +60,6 @@ public class MyView extends View {
         super(context, attrs, defStyleAttr);
         init(context);
     }
-
-    //    public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-//        super(context, attrs, defStyleAttr, defStyleRes);
-//    }
     private void init(Context context) {
         mContext1 = context;
         mPaint = new Paint();
@@ -62,32 +77,6 @@ public class MyView extends View {
                         getHeight() / 2 + mRect.height() / 2,
                         mPaint);
 
-    }
-
-    /**
-     * 设置圆的背景色
-     *
-     * @param color
-     */
-    public void setColor(Integer color) {
-        mPaint.setColor(color); // 设置画笔颜色
-        invalidate();   // 更新画板
-    }
-
-    /**
-     * 设置圆的背景色
-     *
-     * @param text
-     */
-    public void setText(String text) {
-        mText = text;
-        invalidate();
-    }
-
-    public void setTextSize(Integer textSize){
-        mTextSize=  DensityUtils.dip2px(mContext1,textSize);
-        mPaint.setTextSize(mTextSize);
-        invalidate();
     }
 
 
