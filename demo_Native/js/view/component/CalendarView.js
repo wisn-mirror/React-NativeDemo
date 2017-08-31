@@ -14,12 +14,12 @@ const week = ['日', '一', '二', '三', '四', '五', '六']
 export default class CalendarView extends Component {
     constructor(props) {
         super(props);
-        this.year = this.props.year;
-        this.month = this.props.month;
         this.state = {
+            year: this.props.year,
+            month: this.props.month,
             isShow: true,
             isShowStr: '收起',
-            select: this.mGetTodyDate(),
+            select: -1,
         };
     }
 
@@ -30,6 +30,12 @@ export default class CalendarView extends Component {
         year: PropTypes.number,
         //指定月 不传值默认本月
         month: PropTypes.number,
+    }
+
+    componentDidMount() {
+        this.setState({
+            select: this.mGetTodyDate(),
+        });
     }
 
     _PressIsShow() {
@@ -129,14 +135,13 @@ export default class CalendarView extends Component {
      * @returns {number}
      */
     mGetDate() {
-        var date = new Date();
-        if (this.year !== null && this.month !== null) {
-            var d = new Date(this.year, this.month, 0);
-            console.log(" mGetDate "+d.getDate())
+        if (this.state.year !== null && this.state.month !== null) {
+            var d = new Date(this.state.year, this.state.month, 0);
             return d.getDate();
         } else {
-            var year = date.getFullYear();
-            var month = date.getMonth() + 1;
+            var d = new Date();
+            var year = d.getFullYear();
+            var month = d.getMonth() + 1;
             var d = new Date(year, month, 0);
             return d.getDate();
         }
@@ -148,7 +153,11 @@ export default class CalendarView extends Component {
      */
     mGetTodyDate() {
         var d = new Date();
-        return d.getDate();
+        if (d.getYear() === this.state.year && (d.getMonth() + 1) === this.state.month) {
+            return d.getDate();
+        } else {
+            return -1;
+        }
     }
 
 
@@ -157,15 +166,14 @@ export default class CalendarView extends Component {
      * @returns {number}
      */
     mGetDataWeek() {
-        var date = new Date();
-        if (this.year !== null && this.month !== null) {
-            var d = new Date(this.year, this.month, 0);
+        if (this.state.year !== null && this.state.month !== null) {
+            var d = new Date(this.state.year, this.state.month, 0);
             d.setDate(1);
-            console.log(" mGetDataWeek "+d.getDay())
             return d.getDay();
         } else {
-            date.setDate(1);
-            return date.getDay();
+            var d = new Date();
+            d.setDate(1);
+            return d.getDay();
         }
     }
 
