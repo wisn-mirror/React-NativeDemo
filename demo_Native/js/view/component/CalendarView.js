@@ -92,23 +92,29 @@ export default class CalendarView extends Component {
                 } else {
                     if ((sum + weekStart) >= index) {
                         var selectStyle = {};
+                        var textColorStyle = {};
                         if (data === this.state.select) {
-                            selectStyle = {backgroundColor: "red"};
+                            selectStyle = {backgroundColor: "#ff9821"};
                         } else {
                             selectStyle = null;
+                        }
+                        if(j===0||j===6){
+                            textColorStyle = {color: "#ff1760", backgroundColor:"#dfdfdf"};
+                        }else{
+                            textColorStyle=null;
                         }
                         if (index === (today + weekStart)) {
                             //今天
                             views.push(
                                 <TouchableOpacity key={index} onPress={this._pressDay.bind(this, data)}>
-                                    <Text style={[styles.monthDayStyle, {backgroundColor: "#4fff5b"}, selectStyle]}
+                                    <Text style={[styles.monthDayStyle, {backgroundColor: "#ff9022"}, selectStyle,textColorStyle]}
                                     >{data}</Text>
                                 </TouchableOpacity>)
                         } else {
                             //除了今天的其他的所有天
                             views.push(
                                 <TouchableOpacity key={index} onPress={this._pressDay.bind(this, data)}>
-                                    <Text style={[styles.monthDayStyle, selectStyle]}>{data}</Text>
+                                    <Text style={[styles.monthDayStyle, selectStyle,textColorStyle]}>{data}</Text>
                                 </TouchableOpacity>)
 
                         }
@@ -208,7 +214,7 @@ const styles = StyleSheet.create({
         paddingTop: 3,
         borderWidth: 1,
         borderRadius: 12,
-        borderColor: "red",
+        borderColor: "#ffc226",
     },
     nullStyle: {
         width: 24,
@@ -227,14 +233,16 @@ const styles = StyleSheet.create({
         height: 40,
         textAlign: 'center',
         width: SCREEN_WIDTH,
-        color: '#4fff5b'
+        color: '#ffab3b'
 
     },
     titleStyle: {
         width: 30,
         textAlign: 'center',
         height: 30,
-        fontSize: 16
+        fontSize: 14,
+        marginTop:4,
+        color:'#ff3e08',
     }
 });
 
