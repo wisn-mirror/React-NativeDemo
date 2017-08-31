@@ -26,12 +26,16 @@ export default class CalendarView extends Component {
     static propTypes = {
         style: View.propTypes.style,
         PercentStyle: View.propTypes.style,
+        //指定年 不传值默认本年
+        year: PropTypes.number,
+        //指定月 不传值默认本月
+        month: PropTypes.number,
     }
 
     _PressIsShow() {
         this.setState({
             isShow: !this.state.isShow,
-            isShowStr: this.state.isShow ? '收起' : '展开',
+            isShowStr: this.state.isShow ? '展开' : '收起',
         });
     }
 
@@ -85,7 +89,7 @@ export default class CalendarView extends Component {
                         } else {
                             //除了今天的其他的所有天
                             views.push(
-                                <TouchableOpacity key={index}  onPress={this._pressDay.bind(this, data)}>
+                                <TouchableOpacity key={index} onPress={this._pressDay.bind(this, data)}>
                                     <Text style={[styles.monthDayStyle, selectStyle]}>{data}</Text>
                                 </TouchableOpacity>)
 
@@ -126,10 +130,16 @@ export default class CalendarView extends Component {
      */
     mGetDate() {
         var date = new Date();
-        var year = date.getFullYear();
-        var month = date.getMonth() + 1;
-        var d = new Date(year, month, 0);
-        return d.getDate();
+        if (this.year !== null && this.month !== null) {
+            var d = new Date(this.year, this.month, 0);
+            console.log(" mGetDate "+d.getDate())
+            return d.getDate();
+        } else {
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var d = new Date(year, month, 0);
+            return d.getDate();
+        }
     }
 
     /**
@@ -148,8 +158,15 @@ export default class CalendarView extends Component {
      */
     mGetDataWeek() {
         var date = new Date();
-        date.setDate(1);
-        return date.getDay();
+        if (this.year !== null && this.month !== null) {
+            var d = new Date(this.year, this.month, 0);
+            d.setDate(1);
+            console.log(" mGetDataWeek "+d.getDay())
+            return d.getDay();
+        } else {
+            date.setDate(1);
+            return date.getDay();
+        }
     }
 
 }
