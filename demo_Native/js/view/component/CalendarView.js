@@ -9,7 +9,6 @@ import {
 import Dimensions from 'Dimensions';
 
 export const SCREEN_WIDTH = Dimensions.get('window').width;
-export const SCREEN_HEIGHT = Dimensions.get('window').height;
 const week = ['日', '一', '二', '三', '四', '五', '六'];
 export default class CalendarView extends Component {
     constructor(props) {
@@ -25,7 +24,6 @@ export default class CalendarView extends Component {
 
     static propTypes = {
         style: View.propTypes.style,
-        PercentStyle: View.propTypes.style,
         //指定年 不传值默认本年
         year: PropTypes.number,
         //指定月 不传值默认本月
@@ -81,7 +79,7 @@ export default class CalendarView extends Component {
         // console.log("tag  weekStart" + weekStart + " sum" + sum + " numWeek" + numWeek + " select " + this.state.select);
         var OutViews = [];
         var index = 0;
-        var data = 1;
+        var date = 1;
         var column = (this.state.isShow) ? numWeek : 1;
         for (var i = 0; i < column; i++) {
             var views = [];
@@ -94,7 +92,7 @@ export default class CalendarView extends Component {
                     if ((sum + weekStart) >= index) {
                         var selectStyle = {};
                         var textColorStyle = {};
-                        if (data === this.state.select) {
+                        if (date === this.state.select) {
                             //选中的样式
                             selectStyle = {backgroundColor: "#ff9821"};
                         } else {
@@ -109,15 +107,15 @@ export default class CalendarView extends Component {
                         if (index === (today + weekStart)) {
                             //今天
                             views.push(
-                                <TouchableOpacity key={index} onPress={this._pressDay.bind(this, data)}>
+                                <TouchableOpacity key={index} onPress={this._pressDay.bind(this, date)}>
                                     <Text style={[styles.monthDayStyle, {backgroundColor: "#a6ffac"}, selectStyle,textColorStyle]}
-                                    >{data}</Text>
+                                    >{date}</Text>
                                 </TouchableOpacity>)
                         } else {
                             //除了今天的其他的所有天
                             views.push(
-                                <TouchableOpacity key={index} onPress={this._pressDay.bind(this, data)}>
-                                    <Text style={[styles.monthDayStyle, selectStyle,textColorStyle]}>{data}</Text>
+                                <TouchableOpacity key={index} onPress={this._pressDay.bind(this, date)}>
+                                    <Text style={[styles.monthDayStyle, selectStyle,textColorStyle]}>{date}</Text>
                                 </TouchableOpacity>)
 
                         }
@@ -126,7 +124,7 @@ export default class CalendarView extends Component {
                         views.push(<Text key={index}
                                          style={styles.nullStyle}> </Text>)
                     }
-                    data++;
+                    date++;
                 }
             }
             OutViews.push(<View key={i} style={styles.outLineViewStyle}>
@@ -178,7 +176,7 @@ export default class CalendarView extends Component {
      */
     mGetTodyDate() {
         var d = new Date();
-        console.log("TAG"+d.getFullYear() +"  " +this.state.year+" "+(d.getMonth() + 1) +"   "+ this.state.month)
+        // console.log("TAG"+d.getFullYear() +"  " +this.state.year+" "+(d.getMonth() + 1) +"   "+ this.state.month)
         //当前月选中当天 如果this.state.year，this.state.month为null 是非法，默认本月，不为null是要和当月相等
         if ((this.state.year === null||this.state.month === null ) || (d.getFullYear() === this.state.year && (d.getMonth() + 1) === this.state.month)) {
             return d.getDate();
