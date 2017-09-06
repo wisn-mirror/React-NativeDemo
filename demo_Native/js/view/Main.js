@@ -70,13 +70,13 @@ export default class demo_Native extends Component {
         return (
             <View>
 
-                <CalendarView
+               {/* <CalendarView
                     year={2017}
                     month={7}
                     selectOnListener={(date)=>{
                       Alert.alert("选择","选中日期"+date);
                     }}
-                />
+                />*/}
 
                {/* <MyTextView
                     {...this.props}
@@ -86,18 +86,46 @@ export default class demo_Native extends Component {
                     text='你好，TextView'
                     // onChangeMessage={(event) => this._onChange(event)}
                     />*/}
+                <ScrollViewTabView
+                    tabBarBackgroundColor='white'
+                    tabBarActiveTextColor='#002D00'
+                    tabBarInactiveTextColor="#002D00"
+                    tabBarUnderlineStyle={{backgroundColor: '#5BD672'}}
+                    onChangeTab={(keys)=>{
+                        console.log("TAG",keys.i+" "+keys.ref);
+                    }}
+                    ref={(tabView) => { console.log("tabView",tabView); }}
+                    renderTabBar={() => <ScrollableTabBar/>}>
+
+                    <Text ref={"aa"} tabLabel='key1'>数据同步1</Text>
+                    <Text  ref="bb" tabLabel='key1'>数据同步2</Text>
+                </ScrollViewTabView>
+                {/*<RatingBarView
+                    style={{backgroundColor:'white'}}
+                    title="哈哈哈"
+                    current={2}
+                    RatingChangeLister={(result)=>this.callBack(result)}
+                    onChange={(result)=>{
+                        console.log("tag",result);
+                    }}
+                    isEdit={true}
+                />
                 <RatingBarView
                     style={{backgroundColor:'white'}}
                     title="哈哈哈"
                     current={2}
                     RatingChangeLister={(result)=>this.callBack(result)}
+                    onChange={(result)=>{
+                        console.log("tag",result);
+                    }}
+                    isEdit={false}
                 />
                 <TouchableOpacity onPress={() => this._onPressShowToast()}>
                     <Text style={{marginTop: 30, fontSize: 40}}>show Native toast</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this._onPressStartNative()}>
                     <Text style={{marginTop: 30, fontSize: 40}}>start Native test</Text>
-                </TouchableOpacity>
+                </TouchableOpacity>*/}
             </View>
         );
     }
