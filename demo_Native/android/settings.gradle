@@ -1,3 +1,6 @@
 rootProject.name = 'demo_Native'
 
 include ':app'
+include ':skinLib'
+project(':skinLib').projectDir = new File('framework/skinlib/skinlib')
+
