@@ -13,13 +13,12 @@ import {
     DeviceEventEmitter,
 } from 'react-native';
 import BaseComponent from "../BaseComponent"
-import Four from "./Four"
 
-export default class Three extends BaseComponent {
+export default class Four extends BaseComponent {
     constructor(props) {
         super(props);
         this.state = {
-            them: this.props.them,
+            them:this.props.them,
         };
     }
 
@@ -45,27 +44,12 @@ export default class Three extends BaseComponent {
                 }}>
                     <Text style={{color: 'red', fontSize: 30}}>changStyle_BBB</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this._onPressNext()}>
-                    <Text style={{color: 'black', fontSize: 30}}>Four</Text>
-                </TouchableOpacity>
             </View>
         );
     }
 
     _onPress() {
         this.props.navigator.pop();
-    }
-
-    _onPressNext() {
-        this.props.navigator.push(
-            {
-                component: Four,
-                props: {
-                    ...this.props,
-                    them: this.state.them,
-                }
-            }
-        )
     }
 
     _onPressChangeThem(color) {
