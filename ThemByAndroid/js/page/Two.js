@@ -58,6 +58,7 @@ export default class Two extends BaseComponent {
                 component: Three,
                 props: {
                     ...this.props,
+                    them:this.state.them,
                 }
             }
         )

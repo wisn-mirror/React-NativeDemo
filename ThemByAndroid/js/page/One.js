@@ -6,7 +6,6 @@
 import React, {Component} from 'react';
 
 import {
-    StyleSheet,
     Text,
     View,
     TouchableOpacity
@@ -36,7 +35,6 @@ export default class One extends BaseComponent {
                 <TouchableOpacity onPress={() => this._onPress()}>
                     <Text style={{color: 'red', fontSize: 30}}>Two</Text>
                 </TouchableOpacity>
-
             </View>
         );
     }
@@ -47,6 +45,7 @@ export default class One extends BaseComponent {
                 component: Two,
                 props: {
                     ...this.props,
+                    them:this.state.them,
                 }
             }
         )

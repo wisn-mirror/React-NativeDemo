@@ -19,7 +19,7 @@ export default class ThemFactory {
                     this.setThem("#fff075");
                     result = "#fff075";
                 }
-                console.log("getTheme:"+result);
+                // console.log("getTheme:"+result);
                 resolve(ThemDe.createTheme(result));
             })
         });
@@ -27,7 +27,7 @@ export default class ThemFactory {
 
     setThem(color) {
         AsyncStorage.setItem(key, color, (error => {
-            console.log("setItem:"+error);
+            // console.log("setItem:"+error);
         }))
     }
 

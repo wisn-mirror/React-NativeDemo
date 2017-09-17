@@ -37,12 +37,12 @@ export default class Three extends BaseComponent {
                 <TouchableOpacity onPress={() => {
                     this._onPressChangeThem("#2ccd79")
                 }}>
-                    <Text style={{color: 'red', fontSize: 30}}>changStyle_red</Text>
+                    <Text style={{color: 'red', fontSize: 30}}>changStyle_AAA</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
                     this._onPressChangeThem("#ffcbdc")
                 }}>
-                    <Text style={{color: 'red', fontSize: 30}}>changStyle_blue</Text>
+                    <Text style={{color: 'red', fontSize: 30}}>changStyle_BBB</Text>
                 </TouchableOpacity>
             </View>
         );
