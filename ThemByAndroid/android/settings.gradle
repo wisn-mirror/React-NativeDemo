@@ -1,3 +1,5 @@
 rootProject.name = 'ThemByAndroid'
 
 include ':app'
+include ':skinlib'
+project(':skinlib').projectDir=new File('SkinLib/skinlib')

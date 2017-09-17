@@ -1,3 +1,6 @@
 [submodule "demo_Native/android/framework/skinlib"]
 	path = demo_Native/android/framework/skinlib
 	url = https://github.com/wisn-mirror/SkinLib.git
+[submodule "ThemByAndroid/android/SkinLib"]
+	path = ThemByAndroid/android/SkinLib
+	url = https://github.com/wisn-mirror/SkinLib.git
