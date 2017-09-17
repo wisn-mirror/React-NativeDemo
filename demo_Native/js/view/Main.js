@@ -69,8 +69,16 @@ export default class demo_Native extends Component {
         // return (   );
         return (
             <View>
+                <Text style={{color:'red'}}>dafdsafdsa</Text>
+                <Image style={{width:20,height:20}} source={{uri:'ic_launcher'}}/>
+                <Text style={{color:'red'}}>dafdsafdsa</Text>
+                <Image style={{width:20,height:20}} source={{uri:'ic_launcher'}}/>
+                <Text style={{color:'red'}}>dafdsafdsa</Text>
+                <Image style={{width:20,height:20}} source={{uri:'ic_launcher'}}/>
+                <Image style={{width:210,height:210}} source={{uri:'file:///sdcard/aaaa.png'}}/>
+                <Image style={{width:210,height:210}} source={{uri:'file:///sdcard/dd/the/res/drawable-hdpi-v4/abc_ic_star_half_black_16dp.png'}}/>
 
-               {/* <CalendarView
+                {/* <CalendarView
                     year={2017}
                     month={7}
                     selectOnListener={(date)=>{
@@ -86,7 +94,7 @@ export default class demo_Native extends Component {
                     text='你好，TextView'
                     // onChangeMessage={(event) => this._onChange(event)}
                     />*/}
-                <ScrollViewTabView
+                {/*<ScrollViewTabView
                     tabBarBackgroundColor='white'
                     tabBarActiveTextColor='#002D00'
                     tabBarInactiveTextColor="#002D00"
@@ -99,7 +107,7 @@ export default class demo_Native extends Component {
 
                     <Text ref={"aa"} tabLabel='key1'>数据同步1</Text>
                     <Text  ref="bb" tabLabel='key1'>数据同步2</Text>
-                </ScrollViewTabView>
+                </ScrollViewTabView>*/}
                 {/*<RatingBarView
                     style={{backgroundColor:'white'}}
                     title="哈哈哈"

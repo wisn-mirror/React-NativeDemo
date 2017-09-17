@@ -249,6 +249,7 @@ public class RnModule extends ReactContextBaseJavaModule implements LifecycleEve
         }else if(requestCode==REQUEST_CODE_CROP){
             //剪切相册
             if(resultCode==Activity.RESULT_OK){
+                Log.d(TAG," ");
                mPromise.resolve(mUri.toString());
                 saveHeadImage();
             }else{
