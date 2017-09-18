@@ -7,23 +7,11 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.thembyandroid.base.BaseReactApplication;
 import com.thembyandroid.base.BaseReactNativeHost;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class MainApplication extends Application implements ReactApplication {
-
-  private final BaseReactNativeHost mReactNativeHost = new BaseReactNativeHost(this) ;
-
-  @Override
-  public ReactNativeHost getReactNativeHost() {
-    return mReactNativeHost;
-  }
-
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    SoLoader.init(this, /* native exopackage */ false);
-  }
+public class MainApplication extends BaseReactApplication {
 }
