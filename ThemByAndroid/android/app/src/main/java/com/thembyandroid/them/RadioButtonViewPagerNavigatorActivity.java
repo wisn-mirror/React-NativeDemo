@@ -5,18 +5,26 @@ import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.widget.RadioGroup;
 
 
+import com.facebook.react.bridge.NativeModule;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.uimanager.ViewManager;
 import com.thembyandroid.R;
 import com.thembyandroid.adapter.FragmentAdapter;
+import com.thembyandroid.base.BaseReactActivity;
 import com.thembyandroid.view.MyRadioButton;
+import com.wisn.skinlib.base.SkinAppCompatActivity;
 
 import java.util.ArrayList;
+
+import java.util.Collections;
 import java.util.List;
 
-public class RadioButtonViewPagerNavigatorActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener,
-                                                                                        ViewPager.OnPageChangeListener {
+public class RadioButtonViewPagerNavigatorActivity extends BaseReactActivity implements RadioGroup.OnCheckedChangeListener,
+                                                                                            ViewPager.OnPageChangeListener {
 
     private RadioGroup mRadioButton;
     private MyRadioButton mRadiobutton_bg_home;
@@ -27,7 +35,7 @@ public class RadioButtonViewPagerNavigatorActivity extends AppCompatActivity imp
 
     private List<String> data=new ArrayList<String>();
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigator_viewpager);
         mRadioButton = (RadioGroup)findViewById(R.id.bottom_radiogroup);
@@ -46,7 +54,8 @@ public class RadioButtonViewPagerNavigatorActivity extends AppCompatActivity imp
     }
 
     private void setDefaultFragment() {
-        mRadiobutton_bg_home.setChecked(true);
+//        mRadiobutton_bg_home.setChecked(true);
+//        mRadiobutton_bg_gift.setChecked(true);
         data.add("HomeFragment");
         data.add("GiftFragment");
         data.add("StartFragment");
@@ -54,6 +63,7 @@ public class RadioButtonViewPagerNavigatorActivity extends AppCompatActivity imp
         FragmentAdapter fragmentAdapter=new FragmentAdapter(getSupportFragmentManager(), data);
         mViewpager.setAdapter(fragmentAdapter);
         mViewpager.addOnPageChangeListener(this);
+        mViewpager.setCurrentItem(1);
     }
 
     @Override
@@ -104,5 +114,45 @@ public class RadioButtonViewPagerNavigatorActivity extends AppCompatActivity imp
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
+        ArrayList nativeModuleList = new ArrayList<>();
+        nativeModuleList.add(new MainModule(reactContext));
+        return nativeModuleList;
+    }
+
+    @Override
+    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+        return Collections.emptyList();
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        int currentItem = mViewpager.getCurrentItem();
+        if(currentItem==1){
+            if(mMTouchListener!=null){
+                mMTouchListener.dispatchTouchEvent(event);
+            }
+        }
+        return super.dispatchTouchEvent(event);
+//        return true;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int currentItem = mViewpager.getCurrentItem();
+        if(currentItem==1){
+            if(mMTouchListener!=null){
+                mMTouchListener.dispatchTouchEvent(event);
+            }
+        }
+        return super.onTouchEvent(event);
+    }
+
+    MTouchListener  mMTouchListener;
+    public void setMTouchListener(MTouchListener mTouchListener){
+        this.mMTouchListener=mTouchListener;
     }
 }

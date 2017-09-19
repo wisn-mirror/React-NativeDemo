@@ -21,16 +21,25 @@ export default class BaseComponent extends Component {
     componentDidMount() {
        this.themListener = DeviceEventEmitter.addListener("changeThem",
             (action,params)=>this._onChangeThem(action,params));
+        this.nativeChangeThemListener = DeviceEventEmitter.addListener("nativeChangeThem",
+            (params)=>this.nativeChangeThem(params));
     }
+
     _onChangeThem(action,params){
         if(action==="changeThemAction"){
             this.changeThem(params);
         }
     }
+    nativeChangeThem(params){
+        console.log("nativeChageThem")
+    }
 
     componentWillUnmount() {
         if(this.themListener){
            this.themListener.remove();
+        }
+        if(this.nativeChangeThemListener){
+           this.nativeChangeThemListener.remove();
         }
     }
     changeThem(color){

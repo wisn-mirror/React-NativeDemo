@@ -1,31 +1,21 @@
 package com.thembyandroid.fragment;
 
-
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.thembyandroid.R;
-import com.thembyandroid.base.BaseLazyFragment;
+import com.thembyandroid.base.BaseReactFragment;
 
 
 /**
  * Created by wisn on 2017/9/11.
  */
 
-public class GiftFragment extends BaseLazyFragment {
+public class GiftFragment extends BaseReactFragment {
 
-    @Override
+    /*@Override
     public String getFragment() {
         return "GiftFragment";
-    }
+    }*/
 
 
-    @Override
+   /* @Override
     public View onCreateLazyView(LayoutInflater inflater,
                                  @Nullable ViewGroup container,
                                  @Nullable Bundle savedInstanceState) {
@@ -35,9 +25,14 @@ public class GiftFragment extends BaseLazyFragment {
         TextView textView = (TextView) view.findViewById(R.id.fragment_textView);
         textView.setText("GiftFragment");
         return view;
-    }
+    }*/
 
     @Override
+    protected String getMainPageName() {
+        return "Gift";
+    }
+
+    /*@Override
     public void firstVisible() {
         super.firstVisible();
         Log.e(TAG, "firstVisible ");
@@ -47,5 +42,5 @@ public class GiftFragment extends BaseLazyFragment {
     public void onFragmentVisibleChange(boolean isVisible) {
         super.onFragmentVisibleChange(isVisible);
         Log.e(TAG,"onFragmentVisibleChange isVisible:"+isVisible);
-    }
+    }*/
 }

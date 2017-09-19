@@ -6,12 +6,13 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.soloader.SoLoader;
+import com.wisn.skinlib.base.SkinApplication;
 
 /**
  * Created by wisn on 2017/9/18.
  */
 
-public class BaseReactApplication extends Application implements ReactApplication {
+public class BaseReactApplication extends SkinApplication implements ReactApplication {
 
     private final BaseReactNativeHost mReactNativeHost = new BaseReactNativeHost(this);
 

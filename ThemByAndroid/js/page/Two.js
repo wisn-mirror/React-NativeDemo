@@ -11,15 +11,19 @@ import {
     View,
     TouchableOpacity,
     DeviceEventEmitter,
+    Image,
+    NativeModules,
 } from 'react-native';
 import BaseComponent from "../BaseComponent"
 import Three from "./Three"
+const MainModule = NativeModules.MainModule;
 
 export default class Two extends BaseComponent {
     constructor(props) {
         super(props);
         this.state = {
             them:this.props.them,
+            image:'gift_0',
         };
     }
 
@@ -48,10 +52,22 @@ export default class Two extends BaseComponent {
                 <TouchableOpacity onPress={() => this._onPressNext()}>
                     <Text style={{color: 'black', fontSize: 30}}>Three</Text>
                 </TouchableOpacity>
+                <View>
+                    <Image source={{uri: this.state.image}} style={{width: 100, height: 100}}/>
+                </View>
             </View>
         );
     }
 
+    componentDidMount(){
+        super.componentDidMount();
+        MainModule.getImage("image","gift_0",(result) =>this.setState(result));
+    }
+
+    nativeChangeThem(props){
+        super.nativeChangeThem(props);
+        MainModule.getImage("image","gift_0",(result) =>this.setState(result));
+    }
     _onPressNext() {
         this.props.navigator.push(
             {

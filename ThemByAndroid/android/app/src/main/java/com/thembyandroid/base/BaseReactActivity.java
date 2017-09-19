@@ -10,7 +10,9 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.modules.core.PermissionAwareActivity;
 import com.facebook.react.modules.core.PermissionListener;
+import com.wisn.skinlib.base.SkinActivity;
 import com.wisn.skinlib.base.SkinAppCompatActivity;
+import com.wisn.skinlib.base.SkinFragmentActivity;
 
 import javax.annotation.Nullable;
 
@@ -18,9 +20,9 @@ import javax.annotation.Nullable;
  * Created by wisn on 2017/9/18.
  */
 
-public abstract class BaseReactActivity extends SkinAppCompatActivity implements DefaultHardwareBackBtnHandler,
-                                                                                 PermissionAwareActivity,
-                                                                                 ReactPackage {
+public abstract class BaseReactActivity extends SkinFragmentActivity implements DefaultHardwareBackBtnHandler,
+                                                                                PermissionAwareActivity,
+                                                                                ReactPackage {
 
     private final BaseReactActivityDelegate mDelegate;
 
@@ -47,7 +49,7 @@ public abstract class BaseReactActivity extends SkinAppCompatActivity implements
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((BaseReactNativeHost) getReactNativeHost()).addPackage(this);
         mDelegate.onCreate(savedInstanceState);

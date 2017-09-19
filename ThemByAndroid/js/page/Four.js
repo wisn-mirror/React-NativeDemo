@@ -29,7 +29,7 @@ export default class Four extends BaseComponent {
                 alignItems: 'center',
             }, this.state.them.ThemStyles.OneOutViewStyle]}>
                 <Text style={{color: 'black', fontSize: 30}}>
-                    Three
+                    Four
                 </Text>
                 <TouchableOpacity onPress={() => this._onPress()}>
                     <Text style={{color: 'red', fontSize: 30}}>back </Text>
