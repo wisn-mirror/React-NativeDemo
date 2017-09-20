@@ -7,11 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.thembyandroid.them.RadioButtonViewPagerNavigatorActivity;
 import com.wisn.skinlib.SkinManager;
 import com.wisn.skinlib.base.SkinAppCompatActivity;
 import com.wisn.skinlib.interfaces.SkinLoaderListener;
-import com.wisn.skinlib.loader.SkinResourceCompat;
 import com.wisn.skinlib.utils.LogUtils;
 
 public class FirstActivity extends SkinAppCompatActivity implements View.OnClickListener, SkinLoaderListener {

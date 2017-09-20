@@ -12,7 +12,6 @@ import com.facebook.react.bridge.WritableMap;
 import com.thembyandroid.base.BaseReactContextBaseJavaModule;
 import com.wisn.skinlib.SkinManager;
 import com.wisn.skinlib.interfaces.SkinLoaderListener;
-import com.wisn.skinlib.loader.SkinResourceCompat;
 import com.wisn.skinlib.utils.LogUtils;
 
 /**
@@ -76,14 +75,30 @@ public class MainModule extends BaseReactContextBaseJavaModule {
                 sendEvent("nativeChangeThem", null);
             }
         });
-
     }
 
     @ReactMethod
     public void getImage(String StateName, String imageName, Callback callback) {
-        LogUtils.e("getImage","StateName:"+StateName+" imageName:"+imageName);
+        LogUtils.e("getImage", "StateName:" + StateName + " imageName:" + imageName);
         WritableMap params = Arguments.createMap();
-       String path= SkinResourceCompat.getPathForRN(imageName);
+        String path = SkinManager.getInstance().getPathForRN(imageName);
+        params.putString(StateName, path);
+        callback.invoke(params);
+    }
+
+    @ReactMethod
+    public void getImageList(WritableMap StateName, Callback callback) {
+        WritableMap params = Arguments.createMap();
+//
+//        String path = SkinResourceCompat.getPathForRN(imageName);
+//        params.putString(StateName, path);
+        callback.invoke(params);
+    }
+
+    @ReactMethod
+    public void getColor(String StateName, String colorName, Callback callback) {
+        WritableMap params = Arguments.createMap();
+        String path = SkinManager.getInstance().getColorForRN(colorName);
         params.putString(StateName, path);
         callback.invoke(params);
     }
