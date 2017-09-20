@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.thembyandroid.R;
 import com.thembyandroid.base.BaseLazyFragment;
@@ -31,6 +32,12 @@ public class HomeFragment extends BaseLazyFragment {
 //        String tag = bundle.getString("TAG");
         TextView textView = (TextView) view.findViewById(R.id.fragment_textView);
         textView.setText("HomeFragment");
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(),"dddd",Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
     }
 

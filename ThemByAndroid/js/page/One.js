@@ -34,7 +34,7 @@ export default class One extends BaseComponent {
             <View style={[{
                 flex: 1,
                 alignItems: 'center',
-            }, , this.state.them.ThemStyles.OneOutViewStyle]}>
+            } , this.state.them.ThemStyles.OneOutViewStyle]}>
                 <Text style={{color: 'red', fontSize: 30}}>
                     One
                 </Text>

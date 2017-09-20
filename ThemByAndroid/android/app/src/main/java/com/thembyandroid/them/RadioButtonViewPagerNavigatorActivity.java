@@ -4,26 +4,18 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.widget.RadioGroup;
 
-
-import com.facebook.react.bridge.NativeModule;
-import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.uimanager.ViewManager;
 import com.thembyandroid.R;
 import com.thembyandroid.adapter.FragmentAdapter;
-import com.thembyandroid.base.BaseReactActivity;
 import com.thembyandroid.view.MyRadioButton;
-import com.wisn.skinlib.base.SkinAppCompatActivity;
+import com.wisn.skinlib.base.SkinFragmentActivity;
 
 import java.util.ArrayList;
-
-import java.util.Collections;
 import java.util.List;
 
-public class RadioButtonViewPagerNavigatorActivity extends BaseReactActivity implements RadioGroup.OnCheckedChangeListener,
+public class RadioButtonViewPagerNavigatorActivity extends SkinFragmentActivity implements RadioGroup.OnCheckedChangeListener,
                                                                                             ViewPager.OnPageChangeListener {
 
     private RadioGroup mRadioButton;
@@ -115,18 +107,18 @@ public class RadioButtonViewPagerNavigatorActivity extends BaseReactActivity imp
     public void onPageScrollStateChanged(int state) {
 
     }
-
-    @Override
-    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        ArrayList nativeModuleList = new ArrayList<>();
-        nativeModuleList.add(new MainModule(reactContext));
-        return nativeModuleList;
-    }
-
-    @Override
-    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
-    }
+//
+//    @Override
+//    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
+//        ArrayList nativeModuleList = new ArrayList<>();
+//        nativeModuleList.add(new MainModule(reactContext));
+//        return nativeModuleList;
+//    }
+//
+//    @Override
+//    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+//        return Collections.emptyList();
+//    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {

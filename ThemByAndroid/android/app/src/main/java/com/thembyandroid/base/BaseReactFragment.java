@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,13 +12,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.facebook.react.ReactInstanceManager;
-import com.facebook.react.ReactPackage;
 import com.facebook.react.ReactRootView;
-import com.facebook.react.bridge.NativeModuleCallExceptionHandler;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.thembyandroid.R;
 import com.thembyandroid.them.MTouchListener;
 import com.thembyandroid.them.RadioButtonViewPagerNavigatorActivity;
 import com.wisn.skinlib.utils.LogUtils;
@@ -37,8 +32,8 @@ public abstract class BaseReactFragment extends Fragment implements MTouchListen
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mInflate = (LinearLayout)View.inflate(context, R.layout.fragment_root, null);
-        mReactRootView = new ReactRootView(context);
+//        mInflate = (LinearLayout)View.inflate(context, R.layout.fragment_root, null);
+
 //        mReactInstanceManager.addReactInstanceEventListener();
         ((RadioButtonViewPagerNavigatorActivity) getActivity()).setMTouchListener(this);
         /*mReactInstanceManager = ReactInstanceManager.builder()
@@ -55,12 +50,13 @@ public abstract class BaseReactFragment extends Fragment implements MTouchListen
                                                     .setUseDeveloperSupport(false)
                                                     .setInitialLifecycleState(LifecycleState.RESUMED)
                                                     .build();*/
+        mReactRootView = new ReactRootView(context);
         mReactInstanceManager =
                 ((BaseReactApplication) getActivity().getApplication()).getReactNativeHost()
                                                                        .getReactInstanceManager();
 
-        mReactRootView.startReactApplication(mReactInstanceManager,getMainPageName(),null);
-        mInflate.addView(mReactRootView);
+
+//        mInflate.addView(mReactRootView);
     }
 
     @Override
@@ -76,8 +72,8 @@ public abstract class BaseReactFragment extends Fragment implements MTouchListen
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
          super.onCreateView(inflater, container, savedInstanceState);
-//        return mReactRootView;
-        return mInflate;
+        return mReactRootView;
+//        return mInflate;
     }
 
     @Override
@@ -90,15 +86,16 @@ public abstract class BaseReactFragment extends Fragment implements MTouchListen
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if(!isload){
+            mReactRootView.startReactApplication(mReactInstanceManager,getMainPageName(),null);
             isload=true;
         }
-//        mReactRootView.
+
     }
 
 
     @Override
     public void onDestroyView() {
-//        mReactRootView.unmountReactApplication();
+        mReactRootView.unmountReactApplication();
         super.onDestroyView();
         /*if (mReactRootView != null) {
             ((ViewGroup) mReactRootView.getParent()).removeView(mReactRootView);
@@ -128,8 +125,8 @@ public abstract class BaseReactFragment extends Fragment implements MTouchListen
         if(mReactRootView!=null){
             LogUtils.e("dispatchTouchEvent","getAction:"+event.getAction());
 //            mReactRootView.onTouchEvent(event);
-            mReactRootView.onChildStartedNativeGesture(event);
-            mReactRootView.onChildStartedNativeGesture(event);
+//            mReactRootView.onChildStartedNativeGesture(event);
+//            mReactRootView.onChildStartedNativeGesture(event);
         }
     }
 }

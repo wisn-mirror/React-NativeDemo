@@ -10,8 +10,6 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.modules.core.PermissionAwareActivity;
 import com.facebook.react.modules.core.PermissionListener;
-import com.wisn.skinlib.base.SkinActivity;
-import com.wisn.skinlib.base.SkinAppCompatActivity;
 import com.wisn.skinlib.base.SkinFragmentActivity;
 
 import javax.annotation.Nullable;
@@ -71,7 +69,7 @@ public abstract class BaseReactActivity extends SkinFragmentActivity implements 
     protected void onDestroy() {
         super.onDestroy();
         mDelegate.onDestroy();
-        ((BaseReactNativeHost) getReactNativeHost()).removePackage(this);
+//        ((BaseReactNativeHost) getReactNativeHost()).removePackage(this);
     }
 
     @Override

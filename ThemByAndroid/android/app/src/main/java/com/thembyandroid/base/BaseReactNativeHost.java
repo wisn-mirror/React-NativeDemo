@@ -15,14 +15,11 @@ import java.util.List;
  */
 
 public class BaseReactNativeHost extends ReactNativeHost {
-    List<ReactPackage> data = new ArrayList<ReactPackage>() {
-        {
-            add(new MainReactPackage());
-        }
-    };
+    List<ReactPackage> data = new ArrayList<ReactPackage>() ;
 
     public BaseReactNativeHost(Application application) {
         super(application);
+        data.add(new MainReactPackage());
     }
 
     @Override

@@ -17,25 +17,33 @@ export default class A extends Component {
     constructor(props) {
         super(props);
         this._onPress = this._onPress.bind(this);
-        this.state = {};
+        this.state = {
+            name:"aaa"
+        };
     }
 
     render() {
         return (
-            <View>
+            <View  style={{
+                flex: 1,
+                alignItems: 'center',
+            }}>
                 <Text>gift</Text>
                 <Text>helloWorld</Text>
                 <Text>helloWorld</Text>
-                <TextInput/>
-                <TouchableHighlight onPress={() => this._onPress()}>
+                <Text>{this.state.name}</Text>
+                <TouchableOpacity onPress={()=>{this._onPress()}}>
                     <Text style={{color: 'red', fontSize: 30}}>showToast </Text>
-                </TouchableHighlight>
+                </TouchableOpacity>
             </View>
         );
     }
 
     _onPress() {
-        Alert.alert("aaa");
-        MainModule.showToast();
+        this.setState({name:"33"});
+        console.log("ddddd");
+        Alert.alert("aaa","DD");
+
+       // MainModule.showToast();
     }
 }
