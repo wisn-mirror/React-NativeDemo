@@ -29,7 +29,7 @@ public class GiftFragment extends BaseReactFragment {
 
     @Override
     protected String getMainPageName() {
-        return "Gift";
+        return "ThemByAndroid";
     }
 
     /*@Override

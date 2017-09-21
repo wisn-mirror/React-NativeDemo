@@ -25,6 +25,8 @@ export default class One extends BaseComponent {
         this.state = {
             them: this.props.them,
             image:'gift_0',
+            primary:"#fff",
+
         };
     }
 
@@ -34,7 +36,8 @@ export default class One extends BaseComponent {
             <View style={[{
                 flex: 1,
                 alignItems: 'center',
-            } , this.state.them.ThemStyles.OneOutViewStyle]}>
+                backgroundColor:this.state.primary,
+            } ]}>
                 <Text style={{color: 'red', fontSize: 30}}>
                     One
                 </Text>
@@ -49,6 +52,8 @@ export default class One extends BaseComponent {
                 </TouchableOpacity>
                 <View>
                     <Image source={{uri: this.state.image}} style={{width: 100, height: 100}}/>
+                    <Image source={{uri: this.state.image}} style={{width: 100, height: 100}}/>
+                    <Image source={{uri: this.state.image}} style={{width: 100, height: 100}}/>
                 </View>
             </View>
         );
@@ -62,12 +67,47 @@ export default class One extends BaseComponent {
     }
     componentDidMount(){
         super.componentDidMount();
+        MainModule.getColor("primary","primary",(result) =>this.setState(result));
         MainModule.getImage("image","gift_0",(result) =>this.setState(result));
     }
 
+    /**
+     * 接收换主题消息后回调的方法
+     *
+     * @param props
+     */
     nativeChangeThem(props){
         super.nativeChangeThem(props);
+        MainModule.getColor("primary","primary",(result) =>this.setState(result));
         MainModule.getImage("image","gift_0",(result) =>this.setState(result));
+       /* var a=new Array();
+        a.push("primary");
+        a.push("colorPrimary");
+        a.push("colorPrimaryDark");
+        a.push("colorPrimary");
+        MainModule.getColorList(a,(result) =>this.setState(result))
+
+        var a=new Array();
+        a.push("gift_0");
+        a.push("gift_1");
+        a.push("colorPrimaryDark");
+        a.push("ic_launcher");
+        MainModule.getImageList(a,(result) =>this.setState(result))
+
+
+        var map={};
+        map['primary333']="primary";
+        map['colorPrimary222']="colorPrimary";
+        map['colorPrimaryDark111']="colorPrimaryDark";
+        MainModule.getColorMap(map,(result) =>this.setState(result))
+
+        var map={};
+        map['primary3rewq33']="gift_0";
+        map['coloreePrimaqqqry222']="gift_1";
+        map['colorPrimaryDark111']="colorPrimaryDark";
+        map['ic_launcher']="ic_launcher";
+        MainModule.getImageMap(map,(result) =>this.setState(result))
+*/
     }
     _onPress() {
         this.props.navigator.push(

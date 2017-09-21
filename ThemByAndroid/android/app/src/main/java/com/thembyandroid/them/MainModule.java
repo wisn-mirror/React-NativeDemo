@@ -8,7 +8,13 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableMapKeySetIterator;
+import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.WritableNativeArray;
+import com.facebook.react.bridge.WritableNativeMap;
 import com.thembyandroid.base.BaseReactContextBaseJavaModule;
 import com.wisn.skinlib.SkinManager;
 import com.wisn.skinlib.interfaces.SkinLoaderListener;
@@ -87,11 +93,28 @@ public class MainModule extends BaseReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getImageList(WritableMap StateName, Callback callback) {
+    public void getImageMap(ReadableMap StateName, Callback callback) {
         WritableMap params = Arguments.createMap();
-//
-//        String path = SkinResourceCompat.getPathForRN(imageName);
-//        params.putString(StateName, path);
+        ReadableMapKeySetIterator readableMapKeySetIterator = StateName.keySetIterator();
+        while (readableMapKeySetIterator.hasNextKey()) {
+            String s = readableMapKeySetIterator.nextKey();
+            String Name=StateName.getString(s);
+            String path = SkinManager.getInstance().getPathForRN(Name);
+            LogUtils.e("MainModule", "getImageMap path:" + path + "  name:" + Name+ "  key:" + s);
+            params.putString(s, path);
+        }
+        callback.invoke(params);
+    }
+
+    @ReactMethod
+    public void getImageList(ReadableArray StateName, Callback callback) {
+        WritableMap params = Arguments.createMap();
+        for (int i = 0; i < StateName.size(); i++) {
+            String string = StateName.getString(i);
+            String path = SkinManager.getInstance().getPathForRN(string);
+            LogUtils.e("MainModule", "getImageList path:" + path + "  name:" + string);
+            params.putString(string, path);
+        }
         callback.invoke(params);
     }
 
@@ -102,5 +125,32 @@ public class MainModule extends BaseReactContextBaseJavaModule {
         params.putString(StateName, path);
         callback.invoke(params);
     }
+
+    @ReactMethod
+    public void getColorMap(ReadableMap StateName, Callback callback) {
+        WritableMap params = Arguments.createMap();
+        ReadableMapKeySetIterator readableMapKeySetIterator = StateName.keySetIterator();
+        while (readableMapKeySetIterator.hasNextKey()) {
+            String s = readableMapKeySetIterator.nextKey();
+            String Name=StateName.getString(s);
+            String path = SkinManager.getInstance().getColorForRN(Name);
+            LogUtils.e("MainModule", "getColorMap path:" + path + "  name:" + Name+ "  key:" + s);
+            params.putString(s, path);
+        }
+        callback.invoke(params);
+    }
+
+    @ReactMethod
+    public void getColorList(ReadableArray StateName, Callback callback) {
+        WritableMap params = Arguments.createMap();
+        for (int i = 0; i < StateName.size(); i++) {
+            String string = StateName.getString(i);
+            String path = SkinManager.getInstance().getColorForRN(string);
+            LogUtils.e("MainModule", "getColorList path:" + path + "  name:" + string);
+            params.putString(string, path);
+        }
+        callback.invoke(params);
+    }
+
 
 }
