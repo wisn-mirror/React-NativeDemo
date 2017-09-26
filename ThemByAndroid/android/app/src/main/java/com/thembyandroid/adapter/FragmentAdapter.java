@@ -18,6 +18,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     public FragmentAdapter(FragmentManager fm, List<String> data) {
         super(fm);
         this.data=data;
+        FragmentFactory.init();
     }
 
     @Override

@@ -11,7 +11,6 @@ import java.util.HashMap;
 
 public class FragmentFactory {
     public static HashMap<String, Fragment> mFragments = null;
-
     public static Fragment getFragment(String fag) {
         if (mFragments == null) {
             synchronized (FragmentFactory.class) {
@@ -45,5 +44,13 @@ public class FragmentFactory {
 
         }
         return fragment;
+    }
+    public static void init (){
+        mFragments = new HashMap<>();
+        mFragments.put("GiftFragment", new GiftFragment());
+        mFragments.put("HomeFragment", new HomeFragment());
+        mFragments.put("StartFragment", new StartFragment());
+        mFragments.put("WatchFragment", new WatchFragment());
+
     }
 }
