@@ -33,13 +33,18 @@ public class BaseReactNativeHost extends ReactNativeHost {
     }
 
     public void addPackage(ReactPackage reactPackage) {
+        if (data.contains(reactPackage))
+            return;
         if (data != null) {
             data.add(reactPackage);
-            clear();
-            getReactInstanceManager();
+            update();
         }
     }
 
+    public void update() {
+        clear();
+        getReactInstanceManager();
+    }
     public void removePackage(ReactPackage reactPackage) {
         if (data != null) {
             if (data.contains(reactPackage)) {

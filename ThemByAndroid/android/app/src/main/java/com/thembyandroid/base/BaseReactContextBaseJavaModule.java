@@ -63,4 +63,9 @@ public abstract class BaseReactContextBaseJavaModule extends ReactContextBaseJav
             mActivity.finish();
     }
 
+    @Override
+    public boolean canOverrideExistingModule() {
+//        return super.canOverrideExistingModule();
+        return true;
+    }
 }
