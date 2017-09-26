@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Navigator from 'react-native-deprecated-custom-components'
 
-import Setup from "./Setup"
+import One from "./page/One"
 
 export default class Gift extends Component {
     constructor(props) {
@@ -19,12 +19,21 @@ export default class Gift extends Component {
 
     }
     render() {
+        this.them={
+            bgcolor: "#ffffff",
+            ThemStyles: StyleSheet.create({
+                OneOutViewStyle: {
+                    backgroundColor: "#ffffff",
+                }
+            }),
+        }
         return (
             <Navigator.Navigator
                 initialRoute={{
-                    name: 'Setup', component: Setup,
+                    name: 'Setup', component: One,
                     props: {
                         ...this.props,
+                        them:this.them,
                     },
                 }}
                 configureScene={() => {

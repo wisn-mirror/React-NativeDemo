@@ -11,7 +11,7 @@ import {
     TouchableHighlight
 } from 'react-native';
 
-const MainModule = NativeModules.MainModule;
+const TestModule = NativeModules.TestModule;
 
 export default class A extends Component {
     constructor(props) {
@@ -40,10 +40,7 @@ export default class A extends Component {
     }
 
     _onPress() {
-        this.setState({name:"33"});
-        console.log("ddddd");
-        Alert.alert("aaa","DD");
+        TestModule.showToast();
 
-       // MainModule.showToast();
     }
 }

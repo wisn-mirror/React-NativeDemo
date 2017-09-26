@@ -50,6 +50,9 @@ export default class One extends BaseComponent {
                 <TouchableOpacity onPress={() => this._onPress()}>
                     <Text style={{color: 'red', fontSize: 30}}>Two</Text>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={() => this.nextActivity()}>
+                    <Text style={{color: 'red', fontSize: 30}}>nextActivity</Text>
+                </TouchableOpacity>
                 <View>
                     <Image source={{uri: this.state.image}} style={{width: 100, height: 100}}/>
                     <Image source={{uri: this.state.image}} style={{width: 100, height: 100}}/>
@@ -58,7 +61,9 @@ export default class One extends BaseComponent {
             </View>
         );
     }
-
+    nextActivity(){
+        MainModule.startTest();
+    }
     setDefault() {
         MainModule.setDefaultThem();
     }

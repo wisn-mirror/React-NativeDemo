@@ -14,6 +14,7 @@ import com.thembyandroid.R;
 import com.thembyandroid.adapter.FragmentAdapter;
 import com.thembyandroid.base.BaseReactActivity;
 import com.thembyandroid.base.BaseReactApplication;
+import com.thembyandroid.mudule.MainModule;
 import com.thembyandroid.view.MyRadioButton;
 
 import java.util.ArrayList;
@@ -47,8 +48,6 @@ public class RadioButtonViewPagerNavigatorActivity extends BaseReactActivity imp
         mReactInstanceManager =
                 ((BaseReactApplication) this.getApplication()).getReactNativeHost()
                                                               .getReactInstanceManager();
-
-
     }
 
     @Override

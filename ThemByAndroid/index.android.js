@@ -16,4 +16,4 @@ import A from './js/A';
 AppRegistry.registerComponent('ThemByAndroid', () => Gift);
 
 // AppRegistry.registerComponent('Gift', () => Gift);
-AppRegistry.registerComponent('Gift', () => A);
+AppRegistry.registerComponent('Test', () => A);

@@ -69,7 +69,7 @@ public abstract class BaseReactActivity extends SkinFragmentActivity implements 
     protected void onDestroy() {
         super.onDestroy();
         mDelegate.onDestroy();
-//        ((BaseReactNativeHost) getReactNativeHost()).removePackage(this);
+        ((BaseReactNativeHost) getReactNativeHost()).removePackage(this);
     }
 
     @Override

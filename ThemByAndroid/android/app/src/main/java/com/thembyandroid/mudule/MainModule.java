@@ -1,5 +1,6 @@
-package com.thembyandroid.them;
+package com.thembyandroid.mudule;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.thembyandroid.base.BaseReactContextBaseJavaModule;
+import com.thembyandroid.mudule.TestModule;
+import com.thembyandroid.them.TestActivity;
 import com.wisn.skinlib.SkinManager;
 import com.wisn.skinlib.interfaces.SkinLoaderListener;
 import com.wisn.skinlib.utils.LogUtils;
@@ -152,5 +155,8 @@ public class MainModule extends BaseReactContextBaseJavaModule {
         callback.invoke(params);
     }
 
-
+    @ReactMethod
+    public void startTest(){
+        mActivity.startActivity(new Intent(mActivity, TestActivity.class));
+    }
 }

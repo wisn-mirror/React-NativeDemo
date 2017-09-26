@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 public abstract class BaseReactContextBaseJavaModule extends ReactContextBaseJavaModule implements
                                                                                         ActivityEventListener,
                                                                                         LifecycleEventListener {
-    private Activity mActivity;
+    public  Activity mActivity;
 
     public BaseReactContextBaseJavaModule(ReactApplicationContext reactContext) {
         super(reactContext);

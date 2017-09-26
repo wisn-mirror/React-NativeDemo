@@ -17,7 +17,7 @@ export default class Setup extends BaseComponent {
     }
 
     componentDidMount() {
-        new ThemFactory().getTheme().then((data)=>{
+       /* new ThemFactory().getTheme().then((data)=>{
             console.log("data:"+data.bgcolor);
             this.them=data;
             this.props.navigator.push(
@@ -31,7 +31,16 @@ export default class Setup extends BaseComponent {
             )
         }).catch((error)=>{
 
-        });
+        });*/
+        this.props.navigator.push(
+            {
+                component: One,
+                props: {
+                    // ...this.props,
+                    them:this.them,
+                }
+            }
+        )
     }
     render() {
         return (<View></View>)
