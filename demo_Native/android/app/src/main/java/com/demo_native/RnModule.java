@@ -244,7 +244,6 @@ public class RnModule extends ReactContextBaseJavaModule implements LifecycleEve
                 new File(mFullPath).delete();
             }else{
                 Log.e(TAG,"RESULT_other"+resultCode);
-
             }
         }else if(requestCode==REQUEST_CODE_CROP){
             //剪切相册

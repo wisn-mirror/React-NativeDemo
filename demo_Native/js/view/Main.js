@@ -69,7 +69,20 @@ export default class demo_Native extends Component {
         // return (   );
         return (
             <View>
-                <Text style={{color:'red'}}>dafdsafdsa</Text>
+                <View style={{marginTop:10,flexDirection: 'row', height: 40, justifyContent: 'center', backgroundColor: '#efefef',overflow:"visible"}}>
+                    <Image style={{width: 40, height: 40, backgroundColor: "#fcec47"}} source={{uri: 'ic_launcher'}}/>
+                    <View style={{width: 80, height: 80, backgroundColor: "#fc740f" ,overflow:"visible"}}>
+                        <Image style={{width: 80, height: 80, backgroundColor: "#fc971a" ,overflow:"visible"}}
+                               source={{uri: 'ic_launcher'}}/>
+                    </View>
+                    <Image style={{width: 40, height: 40, backgroundColor: "#fcec47"}} source={{uri: 'ic_launcher'}}/>
+                </View>
+            </View>
+
+        );
+    }
+}
+{/* <Text style={{color:'red'}}>dafdsafdsa</Text>
                 <Image style={{width:20,height:20}} source={{uri:'ic_launcher'}}/>
                 <Text style={{color:'red'}}>dafdsafdsa</Text>
                 <Image style={{width:20,height:20}} source={{uri:'ic_launcher'}}/>
@@ -77,24 +90,27 @@ export default class demo_Native extends Component {
                 <Image style={{width:20,height:20}} source={{uri:'ic_launcher'}}/>
                 <Image style={{width:210,height:210}} source={{uri:'file:///sdcard/aaaa.png'}}/>
                 <Image style={{width:210,height:210}} source={{uri:'file:///sdcard/dd/the/res/drawable-hdpi-v4/abc_ic_star_half_black_16dp.png'}}/>
-
-                {/* <CalendarView
+*/
+}
+{/* <CalendarView
                     year={2017}
                     month={7}
                     selectOnListener={(date)=>{
                       Alert.alert("选择","选中日期"+date);
                     }}
-                />*/}
+                />*/
+}
 
-               {/* <MyTextView
+{/* <MyTextView
                     {...this.props}
                     style={{width: 400, height: 100}}
                     color={processColor('#fc83ff')}
                     textsize={20}
                     text='你好，TextView'
                     // onChangeMessage={(event) => this._onChange(event)}
-                    />*/}
-                {/*<ScrollViewTabView
+                    />*/
+}
+{/*<ScrollViewTabView
                     tabBarBackgroundColor='white'
                     tabBarActiveTextColor='#002D00'
                     tabBarInactiveTextColor="#002D00"
@@ -107,8 +123,9 @@ export default class demo_Native extends Component {
 
                     <Text ref={"aa"} tabLabel='key1'>数据同步1</Text>
                     <Text  ref="bb" tabLabel='key1'>数据同步2</Text>
-                </ScrollViewTabView>*/}
-                {/*<RatingBarView
+                </ScrollViewTabView>*/
+}
+{/*<RatingBarView
                     style={{backgroundColor:'white'}}
                     title="哈哈哈"
                     current={2}
@@ -133,10 +150,7 @@ export default class demo_Native extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this._onPressStartNative()}>
                     <Text style={{marginTop: 30, fontSize: 40}}>start Native test</Text>
-                </TouchableOpacity>*/}
-            </View>
-        );
-    }
+                </TouchableOpacity>*/
 }
 
 export class OperationalTab extends React.Component {
