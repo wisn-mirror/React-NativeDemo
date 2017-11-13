@@ -4,9 +4,14 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
+import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.wisn.skinlib.base.SkinApplication;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by wisn on 2017/9/18.
@@ -14,8 +19,20 @@ import com.wisn.skinlib.base.SkinApplication;
 
 public class BaseReactApplication extends SkinApplication implements ReactApplication {
 
-    private final BaseReactNativeHost mReactNativeHost = new BaseReactNativeHost(this);
+    private final ReactNativeHost host = new ReactNativeHost(this) {
+        @Override
+        public boolean getUseDeveloperSupport() {
+            return true;
+        }
 
+        @Override
+        protected List<ReactPackage> getPackages() {
+            return Arrays.<ReactPackage>asList(
+                    new MainReactPackage(),
+                    new BaseReactPackage()
+            );
+        }
+    };
     private ReactContext mReactContext;
 
     public ReactContext getReactContext() {
@@ -24,7 +41,7 @@ public class BaseReactApplication extends SkinApplication implements ReactApplic
 
     @Override
     public ReactNativeHost getReactNativeHost() {
-        return mReactNativeHost;
+        return host;
     }
 
     @Override

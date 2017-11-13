@@ -1,4 +1,4 @@
-package com.thembyandroid.them;
+package com.thembyandroid.activity;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -7,32 +7,33 @@ import android.support.v4.view.ViewPager;
 import android.widget.RadioGroup;
 
 import com.facebook.react.ReactInstanceManager;
-import com.facebook.react.bridge.NativeModule;
-import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.uimanager.ViewManager;
 import com.thembyandroid.R;
 import com.thembyandroid.adapter.FragmentAdapter;
 import com.thembyandroid.base.BaseReactActivity;
 import com.thembyandroid.base.BaseReactApplication;
-import com.thembyandroid.mudule.MainModule;
-import com.thembyandroid.view.MyRadioButton;
+import com.thembyandroid.view.TipRadioButton;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RadioButtonViewPagerNavigatorActivity extends BaseReactActivity implements RadioGroup.OnCheckedChangeListener,
                                                                                         ViewPager.OnPageChangeListener {
 
     private RadioGroup mRadioButton;
-    private MyRadioButton mRadiobutton_bg_home;
-    private MyRadioButton mRadiobutton_bg_gift;
-    private MyRadioButton mRadiobutton_bg_start;
-    private MyRadioButton mRadiobutton_bg_watch;
+    private TipRadioButton mRadiobutton_bg_home;
+    private TipRadioButton mRadiobutton_bg_gift;
+    private TipRadioButton mRadiobutton_bg_start;
+    private TipRadioButton mRadiobutton_bg_watch;
     private ViewPager mViewpager;
     private ReactInstanceManager mReactInstanceManager;
 
     private List<String> data = new ArrayList<String>();
+
+    @javax.annotation.Nullable
+    @Override
+    protected Bundle getLaunchOptions() {
+        return null;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,20 +41,20 @@ public class RadioButtonViewPagerNavigatorActivity extends BaseReactActivity imp
         setContentView(R.layout.activity_navigator_viewpager);
         mRadioButton = (RadioGroup) findViewById(R.id.bottom_radiogroup);
         mViewpager = (ViewPager) findViewById(R.id.viewpager);
-        mRadiobutton_bg_home = (MyRadioButton) findViewById(R.id.radiobutton_bg_home);
-        mRadiobutton_bg_gift = (MyRadioButton) findViewById(R.id.radiobutton_bg_gift);
-        mRadiobutton_bg_start = (MyRadioButton) findViewById(R.id.radiobutton_bg_start);
-        mRadiobutton_bg_watch = (MyRadioButton) findViewById(R.id.radiobutton_bg_watch);
+        mRadiobutton_bg_home = (TipRadioButton) findViewById(R.id.radiobutton_bg_home);
+        mRadiobutton_bg_gift = (TipRadioButton) findViewById(R.id.radiobutton_bg_gift);
+        mRadiobutton_bg_start = (TipRadioButton) findViewById(R.id.radiobutton_bg_start);
+        mRadiobutton_bg_watch = (TipRadioButton) findViewById(R.id.radiobutton_bg_watch);
         mRadioButton.setOnCheckedChangeListener(this);
         mReactInstanceManager =
                 ((BaseReactApplication) this.getApplication()).getReactNativeHost()
                                                               .getReactInstanceManager();
+        setDefaultFragment();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        setDefaultFragment();
     }
 
     @Override
@@ -131,18 +132,6 @@ public class RadioButtonViewPagerNavigatorActivity extends BaseReactActivity imp
     @Override
     public void onPageScrollStateChanged(int state) {
 
-    }
-
-    @Override
-    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        ArrayList nativeModuleList = new ArrayList<>();
-        nativeModuleList.add(new MainModule(reactContext));
-        return nativeModuleList;
-    }
-
-    @Override
-    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
     }
 
 

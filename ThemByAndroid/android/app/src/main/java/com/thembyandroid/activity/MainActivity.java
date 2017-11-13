@@ -1,4 +1,6 @@
-package com.thembyandroid;
+package com.thembyandroid.activity;
+
+import android.os.Bundle;
 
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -9,6 +11,8 @@ import com.thembyandroid.mudule.MainModule;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 public class MainActivity extends BaseReactActivity {
 
@@ -21,15 +25,9 @@ public class MainActivity extends BaseReactActivity {
         return "ThemByAndroid";
     }
 
+    @Nullable
     @Override
-    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        ArrayList nativeModuleList = new ArrayList<>();
-        nativeModuleList.add(new MainModule(reactContext));
-        return nativeModuleList;
-    }
-
-    @Override
-    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+    protected Bundle getLaunchOptions() {
+        return null;
     }
 }

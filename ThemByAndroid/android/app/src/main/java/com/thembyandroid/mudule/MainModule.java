@@ -12,13 +12,9 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
-import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.bridge.WritableNativeArray;
-import com.facebook.react.bridge.WritableNativeMap;
 import com.thembyandroid.base.BaseReactContextBaseJavaModule;
-import com.thembyandroid.mudule.TestModule;
-import com.thembyandroid.them.TestActivity;
+import com.thembyandroid.activity.TestActivity;
 import com.wisn.skinlib.SkinManager;
 import com.wisn.skinlib.interfaces.SkinLoaderListener;
 import com.wisn.skinlib.utils.LogUtils;
@@ -80,7 +76,7 @@ public class MainModule extends BaseReactContextBaseJavaModule {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                SkinManager.getInstance().resetDefaultThem();
+                SkinManager.getInstance().resetDefaultSkin();
                 sendEvent("nativeChangeThem", null);
             }
         });

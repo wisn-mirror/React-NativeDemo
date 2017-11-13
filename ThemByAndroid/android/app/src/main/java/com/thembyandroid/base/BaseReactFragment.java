@@ -25,7 +25,7 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 public abstract class BaseReactFragment extends Fragment  {
     private ReactRootView mReactRootView;
-    private Context mContext;
+    public Context mContext;
 
     @Override
     public void onAttach(Context context) {
@@ -58,9 +58,14 @@ public abstract class BaseReactFragment extends Fragment  {
         if (!needToEnableDevMenu) {
             mReactRootView.startReactApplication(
                     getReactNativeHost().getReactInstanceManager(),
-                    getMainPageName(), null);
+                    getMainPageName(), getLaunchOptions());
         }
         return mReactRootView;
+    }
+
+    @javax.annotation.Nullable
+    protected  Bundle getLaunchOptions(){
+        return null;
     }
 
     @Override
@@ -110,12 +115,5 @@ public abstract class BaseReactFragment extends Fragment  {
     }
 
     protected abstract String getMainPageName();
-    protected void sendEvent(String eventName,
-                             @Nullable WritableMap params) {
-        if (((BaseReactApplication) getActivity().getApplication()).getReactContext() != null) {
-            ((BaseReactApplication) getActivity().getApplication()).getReactContext()
-                                                            .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                                                            .emit(eventName, params);
-        }
-    }
+
 }

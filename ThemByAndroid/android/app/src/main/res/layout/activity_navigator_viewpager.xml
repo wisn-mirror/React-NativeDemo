@@ -18,7 +18,7 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
-        <com.thembyandroid.view.MyRadioButton
+        <com.thembyandroid.view.TipRadioButton
             android:id="@+id/radiobutton_bg_home"
             style="@style/rediobutton_style"
             android:checked="true"
@@ -26,21 +26,21 @@
             radiobutton:drawableSize="30dp"
             radiobutton:drawableTop="@drawable/radiobutton_bg_home" />
 
-        <com.thembyandroid.view.MyRadioButton
+        <com.thembyandroid.view.TipRadioButton
             android:id="@+id/radiobutton_bg_gift"
             style="@style/rediobutton_style"
             android:text="Gift"
             radiobutton:drawableSize="30dp"
             radiobutton:drawableTop="@drawable/radiobutton_bg_gift" />
 
-        <com.thembyandroid.view.MyRadioButton
+        <com.thembyandroid.view.TipRadioButton
             android:id="@+id/radiobutton_bg_start"
             style="@style/rediobutton_style"
             android:text="Home"
             radiobutton:drawableSize="30dp"
             radiobutton:drawableTop="@drawable/radiobutton_bg_start" />
 
-        <com.thembyandroid.view.MyRadioButton
+        <com.thembyandroid.view.TipRadioButton
             android:id="@+id/radiobutton_bg_watch"
             style="@style/rediobutton_style"
             android:text="Watch"

@@ -6,7 +6,6 @@ import android.view.KeyEvent;
 
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
-import com.facebook.react.ReactPackage;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.modules.core.PermissionAwareActivity;
 import com.facebook.react.modules.core.PermissionListener;
@@ -19,8 +18,7 @@ import javax.annotation.Nullable;
  */
 
 public abstract class BaseReactActivity extends SkinFragmentActivity implements DefaultHardwareBackBtnHandler,
-                                                                                PermissionAwareActivity,
-                                                                                ReactPackage {
+                                                                                PermissionAwareActivity {
 
     private final BaseReactActivityDelegate mDelegate;
 
@@ -43,13 +41,20 @@ public abstract class BaseReactActivity extends SkinFragmentActivity implements 
      * Called at construction time, override if you have a custom delegate implementation.
      */
     protected BaseReactActivityDelegate createReactActivityDelegate() {
-        return new BaseReactActivityDelegate(this, getMainComponentName());
+        return new BaseReactActivityDelegate(this, getMainComponentName()) {
+            @Override
+            protected Bundle getLaunchOptions() {
+                return BaseReactActivity.this.getLaunchOptions();
+            }
+        };
     }
+
+    @Nullable
+    protected abstract Bundle getLaunchOptions();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((BaseReactNativeHost) getReactNativeHost()).addPackage(this);
         mDelegate.onCreate(savedInstanceState);
     }
 
@@ -69,7 +74,6 @@ public abstract class BaseReactActivity extends SkinFragmentActivity implements 
     protected void onDestroy() {
         super.onDestroy();
         mDelegate.onDestroy();
-        ((BaseReactNativeHost) getReactNativeHost()).removePackage(this);
     }
 
     @Override
