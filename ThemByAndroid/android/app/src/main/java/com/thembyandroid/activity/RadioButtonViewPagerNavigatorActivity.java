@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.RadioGroup;
 
 import com.facebook.react.ReactInstanceManager;
@@ -12,6 +13,8 @@ import com.thembyandroid.adapter.FragmentAdapter;
 import com.thembyandroid.base.BaseReactActivity;
 import com.thembyandroid.base.BaseReactApplication;
 import com.thembyandroid.view.TipRadioButton;
+import com.thembyandroid.view.attr.DrawableTopAttr;
+import com.thembyandroid.view.attr.TipBackgroundAttr;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +48,16 @@ public class RadioButtonViewPagerNavigatorActivity extends BaseReactActivity imp
         mRadiobutton_bg_gift = (TipRadioButton) findViewById(R.id.radiobutton_bg_gift);
         mRadiobutton_bg_start = (TipRadioButton) findViewById(R.id.radiobutton_bg_start);
         mRadiobutton_bg_watch = (TipRadioButton) findViewById(R.id.radiobutton_bg_watch);
+        addTipBackgroundAttr(mRadiobutton_bg_home,R.color.colorPrimary);
+        addTipBackgroundAttr(mRadiobutton_bg_gift,R.color.colorPrimary);
+        addTipBackgroundAttr(mRadiobutton_bg_start,R.color.colorPrimary);
+        addTipBackgroundAttr(mRadiobutton_bg_watch,R.color.colorPrimary);
+
+        addDrawableTopAttr(mRadiobutton_bg_home,R.drawable.radiobutton_bg_home);
+        addDrawableTopAttr(mRadiobutton_bg_gift,R.drawable.radiobutton_bg_gift);
+        addDrawableTopAttr(mRadiobutton_bg_start,R.drawable.radiobutton_bg_start);
+        addDrawableTopAttr(mRadiobutton_bg_watch,R.drawable.radiobutton_bg_watch);
+
         mRadioButton.setOnCheckedChangeListener(this);
         mReactInstanceManager =
                 ((BaseReactApplication) this.getApplication()).getReactNativeHost()
@@ -82,6 +95,18 @@ public class RadioButtonViewPagerNavigatorActivity extends BaseReactActivity imp
         mViewpager.setAdapter(fragmentAdapter);
         mViewpager.addOnPageChangeListener(this);
         mViewpager.setCurrentItem(1);
+    }
+
+    public void addTipBackgroundAttr(View view, int attrValueresId){
+        TipBackgroundAttr drawableTopAttr=new TipBackgroundAttr();
+        drawableTopAttr.setRes("tipBackground",attrValueresId);
+        dynamicAddView(view,drawableTopAttr);
+    }
+
+    public void addDrawableTopAttr(View view, int attrValueresId){
+        DrawableTopAttr drawableTopAttr=new DrawableTopAttr();
+        drawableTopAttr.setRes("DrawableTopAttr",attrValueresId);
+        dynamicAddView(view,drawableTopAttr);
     }
 
     @Override

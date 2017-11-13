@@ -38,7 +38,7 @@ public class FirstActivity extends SkinAppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v == mChangeSkin) {
-            SkinManager.getInstance().loadSkin("theme-com.wisn.skin1--30-1.0-2017-09-18-09-16-10.skin",
+            SkinManager.getInstance().loadSkin("theme-com.wisn.skin1--65-1.0-2017-11-02--06-28-16.skin",
                                                this);
             Log.e(TAG, "printprintprint--------------------------------------------------");
 //            SkinResourceCompat.print();
