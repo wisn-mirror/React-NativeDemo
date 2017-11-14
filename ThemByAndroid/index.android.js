@@ -7,13 +7,13 @@
 import React, {Component} from 'react';
 import {
     AppRegistry,
-    StyleSheet,
-    Text,
-    View
 } from 'react-native';
-import Gift from './js/Gift';
-import A from './js/A';
-AppRegistry.registerComponent('ThemByAndroid', () => Gift);
 
-// AppRegistry.registerComponent('Gift', () => Gift);
-AppRegistry.registerComponent('Test', () => A);
+import Setting from './js/view/Setting';
+AppRegistry.registerComponent('Setting', () => Setting);
+
+import SkinSetting from './js/view/SkinSetting';
+AppRegistry.registerComponent('SkinSetting', () => SkinSetting);
+
+import gift_fram from './js/view/gift_fram';
+AppRegistry.registerComponent('gift_fram', () => gift_fram);

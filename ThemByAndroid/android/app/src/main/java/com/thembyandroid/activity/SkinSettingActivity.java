@@ -17,4 +17,10 @@ public class SkinSettingActivity extends BaseReactActivity {
     protected Bundle getLaunchOptions() {
         return null;
     }
+
+    @Nullable
+    @Override
+    protected String getMainComponentName() {
+        return "SkinSetting";
+    }
 }

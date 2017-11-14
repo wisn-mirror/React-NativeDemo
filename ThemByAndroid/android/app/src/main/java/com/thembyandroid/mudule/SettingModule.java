@@ -5,37 +5,37 @@ import android.widget.Toast;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
-import com.thembyandroid.activity.SettingActivity;
+import com.thembyandroid.activity.SkinSettingActivity;
 import com.thembyandroid.base.BaseReactContextBaseJavaModule;
 
 /**
- * Created by wisn on 2017/11/14.
+ * Created by wisn on 2017/9/26.
  */
 
-public class MainModule extends BaseReactContextBaseJavaModule {
+public class SettingModule extends BaseReactContextBaseJavaModule {
 
-    public MainModule(ReactApplicationContext reactContext) {
+    public SettingModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
 
     @Override
     public String getName() {
-        return "MainModule";
+        return "SettingModule";
     }
 
     @ReactMethod
     public void showToast() {
         Toast.makeText(getCurrentActivity(), "hello fdsafdsafdsafd", Toast.LENGTH_SHORT).show();
     }
-
     @ReactMethod
     public void startActivity(String activity) {
         Intent intent = null;
-        if ("SettingActivity".equals(activity)) {
-            intent = new Intent(mActivity, SettingActivity.class);
+        if ("SkinSettingActivity".equals(activity)) {
+            intent = new Intent(mActivity, SkinSettingActivity.class);
         }
         if (intent != null) {
             mActivity.startActivity(intent);
         }
     }
+    
 }

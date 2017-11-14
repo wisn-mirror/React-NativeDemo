@@ -13,7 +13,7 @@ import com.wisn.skinlib.base.SkinAppCompatActivity;
 import com.wisn.skinlib.interfaces.SkinLoaderListener;
 import com.wisn.skinlib.utils.LogUtils;
 
-public class FirstActivity extends SkinAppCompatActivity implements View.OnClickListener, SkinLoaderListener {
+public class LaunchActivity extends SkinAppCompatActivity implements View.OnClickListener, SkinLoaderListener {
     private static final String TAG = "MainActivity";
     private Button mChangeSkin, resetSkin,nextActivity;
 
@@ -54,7 +54,6 @@ public class FirstActivity extends SkinAppCompatActivity implements View.OnClick
             Log.e(TAG, (System.currentTimeMillis() - start) + ":" + path);*/
             SkinManager.getInstance().resetDefaultSkin();
         }else if(v==nextActivity){
-//            startActivity(new Intent(this, MainActivity.class));
             startActivity(new Intent(this, RadioButtonViewPagerNavigatorActivity.class));
         }
     }

@@ -1,55 +1,47 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, {Component} from 'react';
 import {
+    BackHandler,
+    Dimensions,
     DeviceEventEmitter,
 } from 'react-native';
-import  ThemFactory from './dao/ThemFactory'
+
+const window = Dimensions.get('window');
+
 export default class BaseComponent extends Component {
     constructor(props) {
         super(props);
-        this.themFactory=new ThemFactory();
-        this.state = {
-            them:this.props.them,
-        };
     }
 
-    componentDidMount() {
-       this.themListener = DeviceEventEmitter.addListener("changeThem",
-            (action,params)=>this._onChangeThem(action,params));
-        this.nativeChangeThemListener = DeviceEventEmitter.addListener("nativeChangeThem",
-            (params)=>this.nativeChangeThem(params));
-    }
-
-    _onChangeThem(action,params){
-        if(action==="changeThemAction"){
-            this.changeThem(params);
-        }
-    }
-    nativeChangeThem(params){
-        console.log("nativeChageThem")
+    componentWillMount() {
+        this.nativeChangeThemListener = DeviceEventEmitter.addListener("nativeChangeSkin",
+            (params) => this.updateSkin(params));
+        BackHandler.addEventListener("hardwareBackPress", this.onBackClicked);
     }
 
     componentWillUnmount() {
-        if(this.themListener){
-           this.themListener.remove();
-        }
-        if(this.nativeChangeThemListener){
-           this.nativeChangeThemListener.remove();
-        }
+        BackHandler.removeEventListener("hardwareBackPress", this.onBackClicked);
+        if (this.nativeChangeThemListener)
+            this.nativeChangeThemListener.remove();
     }
-    changeThem(color){
-        if(!color)return ;
-        this.themFactory.setThem(color);
-        this.themFactory.getTheme().then((data)=>{
-            this.them=data;
-            this.setState({
-                them:this.them,
-            });
-        })
+
+    //返回 ;//return  true 表示返回上一页  false  表示跳出RN
+    onBackClicked = () => { // 默认 表示跳出RN
+        return false;
     }
+    updateSkin(params){
+
+    }
+
+    /*
+     //复制此方法到 继承该组件的地方即可
+     //BACK物理按键监听
+     onBackClicked = () => {
+         const {navigator} = this.props;
+         if (navigator && navigator.getCurrentRoutes().length > 1) {
+             navigator.pop();
+             return true;//true 表示返回上一页
+         }
+         return false; // 默认false  表示跳出RN
+     }
+     */
 }
