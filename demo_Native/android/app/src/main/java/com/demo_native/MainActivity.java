@@ -19,11 +19,6 @@ public class MainActivity extends ReactActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        LayoutInflater newLayoutInlflater = getLayoutInflater().cloneInContext(this);
-
-        getLayoutInflater().setFactory(new TestInflactory());
-//        getLayoutInflater().setFactory(new TestInflactory());
-//        LayoutInflaterCompat.setFactory(newLayoutInlflater, new TestInflactory());
 
         super.onCreate(savedInstanceState);
     }
