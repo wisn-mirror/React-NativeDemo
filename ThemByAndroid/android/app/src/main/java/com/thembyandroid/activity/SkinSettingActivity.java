@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
 import com.thembyandroid.base.BaseReactActivity;
+import com.wisn.skinlib.SkinManager;
 
 import javax.annotation.Nullable;
 
@@ -15,7 +16,12 @@ public class SkinSettingActivity extends BaseReactActivity {
     @Nullable
     @Override
     protected Bundle getLaunchOptions() {
-        return null;
+        Bundle initialProperties = new Bundle();
+        initialProperties.putString("primary", SkinManager.getInstance().getColorForRN("primary"));
+        initialProperties.putString("gift_0", SkinManager.getInstance().getPathForRN("gift_0"));
+        initialProperties.putString("home_0", SkinManager.getInstance().getPathForRN("home_0"));
+        initialProperties.putString("watch_0", SkinManager.getInstance().getPathForRN("watch_0"));
+        return initialProperties;
     }
 
     @Nullable

@@ -105,10 +105,6 @@ public abstract class BaseReactActivity extends SkinFragmentActivity implements 
         }
     }
 
-    public void getHost() {
-        mDelegate.getReactNativeHost();
-    }
-
     @Override
     public void requestPermissions(
             String[] permissions,
@@ -123,17 +119,5 @@ public abstract class BaseReactActivity extends SkinFragmentActivity implements 
             String[] permissions,
             int[] grantResults) {
         mDelegate.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    protected final ReactNativeHost getReactNativeHost() {
-        return mDelegate.getReactNativeHost();
-    }
-
-    protected final ReactInstanceManager getReactInstanceManager() {
-        return mDelegate.getReactInstanceManager();
-    }
-
-    protected final void loadApp(String appKey) {
-        mDelegate.loadApp(appKey);
     }
 }
