@@ -21,7 +21,7 @@ export default class gift_fram extends BaseComponent {
     constructor(props) {
         super(props);
         this.state = {
-            image:props.gift_0,
+            gift_0:props.gift_0,
             home_0:props.home_0,
             watch_0:props.watch_0,
             primary:props.primary,
@@ -35,9 +35,6 @@ export default class gift_fram extends BaseComponent {
                 alignItems: 'center',
                 backgroundColor:this.state.primary,
             } ]}>
-                <Text style={{color: 'red', fontSize: 30}}>
-                    One
-                </Text>
                 <TouchableOpacity onPress={() => this.setDefault()}>
                     <Text style={{color: 'red', fontSize: 30}}>setDefault</Text>
                 </TouchableOpacity>
@@ -46,7 +43,7 @@ export default class gift_fram extends BaseComponent {
                 </TouchableOpacity>
 
                 <View>
-                    <Image source={{uri: this.state.image}} style={{width: 100, height: 100}}/>
+                    <Image source={{uri: this.state.gift_0}} style={{width: 100, height: 100}}/>
                     <Image source={{uri: this.state.home_0}} style={{width: 100, height: 100}}/>
                     <Image source={{uri: this.state.watch_0}} style={{width: 100, height: 100}}/>
                 </View>
