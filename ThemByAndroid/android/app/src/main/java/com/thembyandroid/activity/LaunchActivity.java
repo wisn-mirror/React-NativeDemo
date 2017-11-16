@@ -8,14 +8,22 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.thembyandroid.R;
+import com.thembyandroid.base.BaseReactActivity;
 import com.wisn.skinlib.SkinManager;
-import com.wisn.skinlib.base.SkinAppCompatActivity;
 import com.wisn.skinlib.interfaces.SkinLoaderListener;
 import com.wisn.skinlib.utils.LogUtils;
 
-public class LaunchActivity extends SkinAppCompatActivity implements View.OnClickListener, SkinLoaderListener {
+import javax.annotation.Nullable;
+
+public class LaunchActivity extends BaseReactActivity implements View.OnClickListener, SkinLoaderListener {
     private static final String TAG = "MainActivity";
     private Button mChangeSkin, resetSkin,nextActivity;
+
+    @Nullable
+    @Override
+    protected Bundle getLaunchOptions() {
+        return null;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

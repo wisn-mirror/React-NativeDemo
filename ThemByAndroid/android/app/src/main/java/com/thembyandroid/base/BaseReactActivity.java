@@ -1,14 +1,19 @@
 package com.thembyandroid.base;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.modules.core.PermissionAwareActivity;
 import com.facebook.react.modules.core.PermissionListener;
+import com.thembyandroid.R;
+import com.wisn.skinlib.SkinManager;
 import com.wisn.skinlib.base.SkinFragmentActivity;
 
 import javax.annotation.Nullable;
@@ -56,6 +61,21 @@ public abstract class BaseReactActivity extends SkinFragmentActivity implements 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDelegate.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(SkinManager.getInstance().getColor(R.color.primary));
+        }
+    }
+
+    @Override
+    public void updateSkin() {
+        super.updateSkin();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(SkinManager.getInstance().getColor(R.color.primary));
+        }
     }
 
     @Override
