@@ -9,7 +9,7 @@ import {
     Text,
     View,
     TouchableOpacity,
-    BackAndroid,
+    BackHandler,
     NativeModules,
     Image,
 } from 'react-native';
@@ -58,7 +58,7 @@ export default class SkinSetting extends BaseComponent {
     }
 
     _onPress() {
-        BackAndroid.exitApp();
+        BackHandler.exitApp();
     }
 
     changeSkin1() {

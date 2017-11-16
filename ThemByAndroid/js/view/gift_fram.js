@@ -11,7 +11,7 @@ import {
     TouchableOpacity,
     NativeModules,
     Image,
-    BackAndroid,
+    BackHandler,
 } from 'react-native';
 import BaseComponent from "../BaseComponent"
 const SkinModule = NativeModules.SkinModule;
@@ -57,7 +57,7 @@ export default class gift_fram extends BaseComponent {
         SkinModule.setDefaultSkin();
     }
     _onPress(){
-        BackAndroid.exitApp();
+        BackHandler.exitApp();
     }
 
 

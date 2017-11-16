@@ -10,7 +10,7 @@ import {
     View,
     TouchableOpacity,
     NativeModules,
-    BackAndroid,
+    BackHandler,
     Image
 } from 'react-native';
 import BaseComponent from "../BaseComponent"
@@ -52,7 +52,7 @@ export default class Setting extends BaseComponent {
     }
 
     _onPress() {
-        BackAndroid.exitApp();
+        BackHandler.exitApp();
     }
 
     skinSetting() {
