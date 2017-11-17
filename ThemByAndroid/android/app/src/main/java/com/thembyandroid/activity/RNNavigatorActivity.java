@@ -2,7 +2,6 @@ package com.thembyandroid.activity;
 
 import android.os.Bundle;
 
-import com.facebook.react.ReactActivity;
 import com.thembyandroid.base.BaseReactActivity;
 import com.wisn.skinlib.SkinManager;
 
@@ -12,7 +11,7 @@ import javax.annotation.Nullable;
  * Created by wisn on 2017/11/13.
  */
 
-public class SkinSettingActivity extends BaseReactActivity {
+public class RNNavigatorActivity extends BaseReactActivity {
     @Nullable
     @Override
     protected Bundle getLaunchOptions() {
@@ -28,6 +27,6 @@ public class SkinSettingActivity extends BaseReactActivity {
     @Nullable
     @Override
     protected String getMainComponentName() {
-        return "SkinSetting";
+        return "NavigatorComp";
     }
 }

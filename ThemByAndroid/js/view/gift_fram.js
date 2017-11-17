@@ -25,6 +25,7 @@ export default class gift_fram extends BaseComponent {
             home_0:props.home_0,
             watch_0:props.watch_0,
             primary:props.primary,
+            colorPrimary:props.colorPrimary,
         };
     }
 
@@ -36,10 +37,10 @@ export default class gift_fram extends BaseComponent {
                 backgroundColor:this.state.primary,
             } ]}>
                 <TouchableOpacity onPress={() => this.setDefault()}>
-                    <Text style={{color: 'red', fontSize: 30}}>setDefault</Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>setDefault</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.nextActivity()}>
-                    <Text style={{color: 'red', fontSize: 30}}>Setting</Text>
+                    <Text style={{color:  this.state.colorPrimary, fontSize: 30}}>Setting</Text>
                 </TouchableOpacity>
 
                 <View>
@@ -70,6 +71,7 @@ export default class gift_fram extends BaseComponent {
     updateSkin(params){
         var colorList=new Array();
         colorList.push("primary");
+        colorList.push("colorPrimary");
         var imageList=new Array();
         imageList.push("home_0");
         imageList.push("watch_0");

@@ -17,3 +17,6 @@ AppRegistry.registerComponent('SkinSetting', () => SkinSetting);
 
 import gift_fram from './js/view/gift_fram';
 AppRegistry.registerComponent('gift_fram', () => gift_fram);
+
+import NavigatorComp from './js/view/NavigatorComp';
+AppRegistry.registerComponent('NavigatorComp', () => NavigatorComp);

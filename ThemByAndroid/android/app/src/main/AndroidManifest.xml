@@ -48,6 +48,9 @@
             android:name=".activity.SkinSettingActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".activity.RNNavigatorActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".activity.RadioButtonViewPagerNavigatorActivity"
             android:configChanges="screenSize|screenLayout"
             android:screenOrientation="portrait"

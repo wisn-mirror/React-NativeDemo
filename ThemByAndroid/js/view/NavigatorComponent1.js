@@ -16,7 +16,9 @@ import {
 import BaseComponent from "../BaseComponent"
 
 const SkinModule = NativeModules.SkinModule;
-export default class SkinSetting extends BaseComponent {
+var NavigatorComponent2 = require('./NavigatorComponent2');
+
+export default class NavigatorComponent1 extends BaseComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,23 +38,16 @@ export default class SkinSetting extends BaseComponent {
                 backgroundColor:this.state.primary,
 
             }}>
-                <TouchableOpacity onPress={() => this.changeSkin1()}>
-                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>changeSkin1</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.changeSkin2()}>
-                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>changeSkin2</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.setDefault()}>
-                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>setDefault</Text>
-                </TouchableOpacity>
                 <TouchableOpacity onPress={() => this._onPress()}>
                     <Text style={{color: this.state.colorPrimary, fontSize: 30}}>back </Text>
                 </TouchableOpacity>
-
+                <TouchableOpacity onPress={() => this.Navigator()}>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>NavigatorComponent2 </Text>
+                </TouchableOpacity>
                 <View>
-                    <Image source={{uri: this.state.gift_0}} style={{width: 100, height: 100}}/>
-                    <Image source={{uri: this.state.home_0}} style={{width: 100, height: 100}}/>
-                    <Image source={{uri: this.state.watch_0}} style={{width: 100, height: 100}}/>
+                    <Image source={{uri: this.state.gift_0}} style={{width: 30, height: 30}}/>
+                    <Image source={{uri: this.state.home_0}} style={{width: 30, height: 30}}/>
+                    <Image source={{uri: this.state.watch_0}} style={{width: 30, height: 30}}/>
                 </View>
             </View>
         );
@@ -61,18 +56,15 @@ export default class SkinSetting extends BaseComponent {
     _onPress() {
         BackHandler.exitApp();
     }
-
-    changeSkin1() {
-        SkinModule.changeSkin("theme-com.wisn.skin1--65-1.0-2017-11-02--06-28-16.skin");
+    Navigator() {
+        this.props.navigator.push({
+            component: NavigatorComponent2,
+            props: {
+                ...this.props,
+            },
+        })
     }
 
-    setDefault() {
-        SkinModule.setDefaultSkin();
-    }
-
-    changeSkin2() {
-        SkinModule.changeSkin("theme-com.wisn.skin2--65-1.0-2017-11-02--06-28-29.skin");
-    }
 
     /** 重写componentWillMount 方法一定要加 super.componentWillMount() 方法添加监听器*/
     componentWillMount() {
@@ -92,3 +84,4 @@ export default class SkinSetting extends BaseComponent {
         SkinModule.getColorImageList(colorList, imageList, (result) => this.setState(result))
     }
 }
+module.exports = NavigatorComponent1;

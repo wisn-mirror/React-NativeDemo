@@ -18,20 +18,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="change"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/primary" />
 
         <Button
             android:id="@+id/resetSkin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reset"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/primary" />
         <Button
             android:id="@+id/nextActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="nextRNActivity"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/primary" />
 
 
     </LinearLayout>
@@ -47,7 +47,7 @@
             android:id="@+id/imageButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/radiobutton_bg_gift"/>
+            android:background="@drawable/radiobutton_bg_watch"/>
 
         <ImageView
             android:id="@+id/imageView1"
@@ -60,10 +60,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/home_0" />
-        <RadioButton
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:drawableTop="@drawable/radiobutton_bg_watch"/>
+
     </LinearLayout>
 
 </LinearLayout>

@@ -17,6 +17,7 @@ public class SettingActivity extends BaseReactActivity {
     protected Bundle getLaunchOptions() {
         Bundle initialProperties = new Bundle();
         initialProperties.putString("primary", SkinManager.getInstance().getColorForRN("primary"));
+        initialProperties.putString("colorPrimary", SkinManager.getInstance().getColorForRN("colorPrimary"));
         initialProperties.putString("gift_0", SkinManager.getInstance().getPathForRN("gift_0"));
         initialProperties.putString("home_0", SkinManager.getInstance().getPathForRN("home_0"));
         initialProperties.putString("watch_0", SkinManager.getInstance().getPathForRN("watch_0"));

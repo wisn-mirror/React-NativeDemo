@@ -16,7 +16,7 @@ import {
     PermissionsAndroid,
 } from 'react-native';
 import BaseComponent from "../BaseComponent"
-
+import ChildComponent from "./ChildComponent";
 const SkinModule = NativeModules.SkinModule;
 const SettingModule = NativeModules.SettingModule;
 export default class Setting extends BaseComponent {
@@ -27,6 +27,7 @@ export default class Setting extends BaseComponent {
             home_0:props.home_0,
             watch_0:props.watch_0,
             primary:props.primary,
+            colorPrimary:props.colorPrimary,
         };
     }
 
@@ -38,32 +39,32 @@ export default class Setting extends BaseComponent {
                 backgroundColor:this.state.primary,
             }}>
                 <TouchableOpacity onPress={() => this.skinSetting()}>
-                    <Text style={{color: 'red', fontSize: 30}}>skinSetting</Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>skinSetting</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.requestReadPermission.bind(this)}>
-                    <Text style={{color: 'red', fontSize: 30}}>权限申请读写</Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>权限申请读写</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.requestCarmeraPermission.bind(this)}>
-                    <Text style={{color: 'red', fontSize: 30}}>权限申请相机</Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>权限申请相机</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.requestLocationPermission.bind(this)}>
-                    <Text style={{color: 'red', fontSize: 30}}>权限申请访问地址</Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>权限申请访问地址</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.checkPermission.bind(this)}>
-                    <Text style={{color: 'red', fontSize: 30}}>查询权限申请读写</Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>查询权限申请读写</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.requestMultiplePermission.bind(this)}>
-                    <Text style={{color: 'red', fontSize: 30}}>权限申请所有</Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>权限申请所有</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this._onPress()}>
-                    <Text style={{color: 'red', fontSize: 30}}>back </Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>back </Text>
                 </TouchableOpacity>
-
-                 <View>
+                 <View style={{flexDirection:'row'}}>
                     <Image source={{uri: this.state.gift_0}} style={{width: 100, height: 100}}/>
                     <Image source={{uri: this.state.home_0}} style={{width: 100, height: 100}}/>
                     <Image source={{uri: this.state.watch_0}} style={{width: 100, height: 100}}/>
                 </View>
+                <ChildComponent/>
             </View>
         );
     }
@@ -205,6 +206,7 @@ export default class Setting extends BaseComponent {
     updateSkin(params) {
         var colorList = new Array();
         colorList.push("primary");
+        colorList.push("colorPrimary");
         var imageList = new Array();
         imageList.push("home_0");
         imageList.push("watch_0");
