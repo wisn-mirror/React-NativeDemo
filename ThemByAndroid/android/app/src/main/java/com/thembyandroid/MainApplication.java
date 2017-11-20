@@ -1,13 +1,17 @@
 package com.thembyandroid;
 
+import android.os.Environment;
+
 import com.thembyandroid.base.BaseReactApplication;
 
+import java.io.File;
+
 public class MainApplication extends BaseReactApplication {
+
+
     @Override
-    public void onCreate() {
-        super.onCreate();
-       /* SkinManager.getInstance().setSkinRootPath(Environment.getExternalStorageDirectory() +
-                                                  File.separator +
-                                                  "dd");*/
+    public String setSkinRootPath() {
+        return Environment.getExternalStorageDirectory() +
+               File.separator + "dd";
     }
 }
