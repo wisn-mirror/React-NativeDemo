@@ -1,11 +1,16 @@
 package com.thembyandroid.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.thembyandroid.R;
 import com.thembyandroid.base.BaseReactActivity;
@@ -17,7 +22,7 @@ import javax.annotation.Nullable;
 
 public class LaunchActivity extends BaseReactActivity implements View.OnClickListener, SkinLoaderListener {
     private static final String TAG = "MainActivity";
-    private Button mChangeSkin, resetSkin,nextActivity;
+    private Button mChangeSkin, resetSkin, nextActivity;
 
     @Nullable
     @Override
@@ -39,7 +44,6 @@ public class LaunchActivity extends BaseReactActivity implements View.OnClickLis
         nextActivity.setOnClickListener(this);
         final float scale = this.getResources().getDisplayMetrics().density;
         LogUtils.e(TAG, "density:" + scale);
-//        return (int) (dpValue * scale + 0.5f);
 
     }
 
@@ -48,21 +52,26 @@ public class LaunchActivity extends BaseReactActivity implements View.OnClickLis
         if (v == mChangeSkin) {
             SkinManager.getInstance().loadSkin("theme-com.wisn.skin1--65-1.0-2017-11-02--06-28-16.skin",
                                                this);
-            Log.e(TAG, "printprintprint--------------------------------------------------");
-//            SkinResourceCompat.print();
         } else if (v == resetSkin) {
-//            SkinResourceCompat.print();
-           /* long start = System.currentTimeMillis();
-            String path = SkinResourceCompat.getPath("aaaaa");
-            for (int i = 0; i < 10; i++) {
-                Log.e(TAG, SkinResourceCompat.getPath("gift_0"));
-                Log.e(TAG, SkinResourceCompat.getPath("gift_1"));
-                Log.e(TAG, SkinResourceCompat.getPath("ic_launcher_round"));
-            }
-            Log.e(TAG, (System.currentTimeMillis() - start) + ":" + path);*/
             SkinManager.getInstance().resetDefaultSkin();
-        }else if(v==nextActivity){
+            requestPermissions();
+        } else if (v == nextActivity) {
             startActivity(new Intent(this, RadioButtonViewPagerNavigatorActivity.class));
+        }
+    }
+
+    public void requestPermissions() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            int request = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            if (request != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 123);
+                return;//
+            } else {
+                //权限同意，不需要处理,
+                 Toast.makeText(this,"权限同意",Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            //低于23 不需要特殊处理
         }
     }
 
@@ -111,6 +120,17 @@ public class LaunchActivity extends BaseReactActivity implements View.OnClickLis
 
     @Override
     public void onProgress(int progress, int sum) {
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "权限申请成功", Toast.LENGTH_SHORT).show();
+        } else if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
+            Toast.makeText(this, "权限申请失败，用户拒绝权限", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }
