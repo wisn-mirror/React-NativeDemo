@@ -1,6 +1,5 @@
 package com.thembyandroid.base;
 
-import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
@@ -22,7 +21,7 @@ public class BaseReactApplication extends SkinApplication implements ReactApplic
     private final ReactNativeHost host = new ReactNativeHost(this) {
         @Override
         public boolean getUseDeveloperSupport() {
-            return true;
+            return false;
         }
 
         @Override

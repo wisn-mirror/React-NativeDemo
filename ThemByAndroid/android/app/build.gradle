@@ -111,27 +111,43 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+        release {
+            storeFile file(RELEASE_STOREFILE)
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+            storePassword RELEASE_STOREPASSWORD
+        }
+    }
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
-            // For each separate APK per architecture, set a unique version code as described here:
-            // http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
-            def versionCodes = ["armeabi-v7a": 1, "x86": 2]
-            def abi = output.getFilter(OutputFile.ABI)
-            if (abi != null) {  // null for the universal-debug, universal-release variants
-                output.versionCodeOverride =
-                        versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
+            def buildType = variant.buildType.name
+            def outputFile = output.outputFile
+            def date = releaseTime()
+            def applicationId = defaultConfig.applicationId
+            def versionName = defaultConfig.versionName
+            def versionCode = defaultConfig.versionCode
+            if (outputFile != null && buildType.contains("release") && outputFile.name.endsWith('.apk')) {
+                def fileName = "${applicationId}-${variant.flavorName}-${versionCode}-${versionName}-${date}.apk"
+//                output.outputFile = new File(outputFile.parent, fileName)
+                output.outputFile = new File("$rootDir/apkFile", fileName)
+
             }
         }
     }
 }
 
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd--hh-mm-ss", TimeZone.getTimeZone("Asia/Shanghai"))
+}
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     // From node_modules
