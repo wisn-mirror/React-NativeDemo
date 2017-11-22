@@ -62,6 +62,9 @@ export default class SkinSetting extends BaseComponent {
                 alignItems: 'center',
                 backgroundColor:this.state.primary,
             }}>
+                <TouchableOpacity onPress={() => this._onPress()}>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>back </Text>
+                </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.changeSkin1()}>
                     <Text style={{color: this.state.colorPrimary, fontSize: 30}}>changeSkin1</Text>
                 </TouchableOpacity>
@@ -70,9 +73,6 @@ export default class SkinSetting extends BaseComponent {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.setDefault()}>
                     <Text style={{color: this.state.colorPrimary, fontSize: 30}}>setDefault</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this._onPress()}>
-                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>back </Text>
                 </TouchableOpacity>
                 <View  style={{flexDirection:'row'}}>
                     <Image source={{uri: this.state.gift_0}} style={{width: 30, height: 30}}/>
@@ -90,7 +90,6 @@ export default class SkinSetting extends BaseComponent {
     }
 
     renderRow(rowData,sectionID,rowID,hightlightRow){
-        console.log("self.state.gift_0:"+this.state.gift_0);
         var index=rowID%3;
         var view=null;
         if(index===0){

@@ -31,7 +31,7 @@ public class HomeFragment extends BaseLazyFragment {
         Bundle bundle = this.getArguments();
 //        String tag = bundle.getString("TAG");
         TextView textView = (TextView) view.findViewById(R.id.fragment_textView);
-        textView.setText("HomeFragment");
+        textView.setText("HomeFragment原生");
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

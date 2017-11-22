@@ -12,20 +12,26 @@ import {
     NativeModules,
     Image,
     BackHandler,
+    StyleSheet,
+    ListView,
+    Alert,
 } from 'react-native';
 import BaseComponent from "../BaseComponent"
 const SkinModule = NativeModules.SkinModule;
 const MainModule = NativeModules.MainModule;
-
+var WineData=require('../data/Wine.json');//数组
 export default class gift_fram extends BaseComponent {
     constructor(props) {
         super(props);
+        var ds=new ListView.DataSource({rowHasChanged:(r1,r2)=>r1!==r2});
         this.state = {
             gift_0:props.gift_0,
             home_0:props.home_0,
             watch_0:props.watch_0,
             primary:props.primary,
             colorPrimary:props.colorPrimary,
+            dataSource:ds,
+            WineData:WineData,
         };
     }
 
@@ -42,13 +48,47 @@ export default class gift_fram extends BaseComponent {
                 <TouchableOpacity onPress={() => this.nextActivity()}>
                     <Text style={{color:  this.state.colorPrimary, fontSize: 30}}>Setting</Text>
                 </TouchableOpacity>
-                <View>
-                    <Image source={{uri: this.state.gift_0}} style={{width: 100, height: 100}}/>
-                    <Image source={{uri: this.state.home_0}} style={{width: 100, height: 100}}/>
-                    <Image source={{uri: this.state.watch_0}} style={{width: 100, height: 100}}/>
+                <View  style={{flexDirection:'row'}}>
+                    <Image source={{uri: this.state.gift_0}} style={{width: 30, height: 30}}/>
+                    <Image source={{uri: this.state.home_0}} style={{width: 30, height: 30}}/>
+                    <Image source={{uri: this.state.watch_0}} style={{width: 30, height: 30}}/>
                 </View>
+                <ListView
+                    dataSource={this.state.dataSource.cloneWithRows(this.state.WineData)}
+                    renderRow={(rowData,sectionID,rowID,hightlightRow)=>{
+                        return this.renderRow(rowData,sectionID,rowID,hightlightRow)}}
+                    /*renderRow={(rowData)=>this.renderRow(rowData)}*/
+                />
             </View>
         );
+    }
+
+    renderRow(rowData,sectionID,rowID,hightlightRow){
+        var index=rowID%3;
+        var view=null;
+        if(index===0){
+            view= <Image style={listStyle.imageStyle}  source={{uri:this.state.gift_0}}/>;
+        }else if(index===1){
+            view= <Image style={listStyle.imageStyle}  source={{uri:this.state.home_0}}/>;
+        }else if(index===2){
+            view= <Image style={listStyle.imageStyle}  source={{uri:this.state.watch_0}}/>;
+        }
+        return (
+            <TouchableOpacity
+                activeOpacity={0.5}
+                onPress={()=>this.pressEvent(rowData)}>
+                <View style={listStyle.rowViewStyle}>
+                    {view}
+                    <View style={listStyle.rowViewStyle2}>
+                        <Text style={{marginRight:10,paddingRight:50}}>{rowData.name}</Text>
+                        <Text style={{color:'red',marginTop:5}}>$:{rowData.money}</Text>
+                    </View>
+                </View>
+            </TouchableOpacity>
+        );
+    }
+    pressEvent(rowData){
+        Alert.alert(rowData.money+rowData.name);
     }
     nextActivity(){
         MainModule.startActivity("SettingActivity");
@@ -78,4 +118,27 @@ export default class gift_fram extends BaseComponent {
         SkinModule.getColorImageList(colorList,imageList,(result) =>this.setState(result))
     }
 }
+
+const  listStyle=StyleSheet.create(
+    {
+        rowViewStyle:{
+            flexDirection:'row',
+            justifyContent:'flex-start',
+            marginLeft:5,
+            marginRight:5,
+            borderBottomWidth:1,
+            borderBottomColor:"#f6d579",
+        },
+        rowViewStyle2:{
+            flexDirection:'column',
+            justifyContent:'center',
+            marginLeft:10,
+        },
+        imageStyle:{
+            height:60,
+            width:60,
+        }
+
+    }
+);
 

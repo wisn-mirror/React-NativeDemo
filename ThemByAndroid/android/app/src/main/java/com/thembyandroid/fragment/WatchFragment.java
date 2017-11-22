@@ -30,9 +30,8 @@ public class WatchFragment extends BaseLazyFragment {
                                  @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_content, container, false);
         Bundle bundle = this.getArguments();
-//        String tag = bundle.getString("TAG");
         TextView textView = (TextView) view.findViewById(R.id.fragment_textView);
-        textView.setText("WatchFragment");
+        textView.setText("WatchFragment原生");
         return view;
     }
 

@@ -24,6 +24,8 @@
             android:checked="true"
             android:text="Home"
             radiobutton:drawableSize="30dp"
+            radiobutton:tipText="1"
+            radiobutton:isTip="false"
             radiobutton:drawableTop="@drawable/radiobutton_bg_home" />
 
         <com.thembyandroid.view.TipRadioButton
@@ -31,6 +33,8 @@
             style="@style/rediobutton_style"
             android:text="Gift"
             radiobutton:drawableSize="30dp"
+            radiobutton:tipText="434"
+            radiobutton:isTip="false"
             radiobutton:drawableTop="@drawable/radiobutton_bg_gift" />
 
         <com.thembyandroid.view.TipRadioButton
@@ -38,6 +42,8 @@
             style="@style/rediobutton_style"
             android:text="Home"
             radiobutton:drawableSize="30dp"
+            radiobutton:tipText="44"
+            radiobutton:isTip="false"
             radiobutton:drawableTop="@drawable/radiobutton_bg_start" />
 
         <com.thembyandroid.view.TipRadioButton
@@ -45,6 +51,8 @@
             style="@style/rediobutton_style"
             android:text="Watch"
             radiobutton:drawableSize="30dp"
+            radiobutton:tipText="44"
+            radiobutton:isTip="true"
             radiobutton:drawableTop="@drawable/radiobutton_bg_watch" />
     </RadioGroup>
 

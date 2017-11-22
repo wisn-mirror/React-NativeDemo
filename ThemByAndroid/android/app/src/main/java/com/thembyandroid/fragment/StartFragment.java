@@ -33,7 +33,7 @@ public class StartFragment extends BaseLazyFragment {
         Bundle bundle = this.getArguments();
 //        String tag = bundle.getString("TAG");
         TextView textView = (TextView) view.findViewById(R.id.fragment_textView);
-        textView.setText("StartFragment");
+        textView.setText("StartFragment原生");
         return view;
     }
 
