@@ -42,7 +42,6 @@ export default class gift_fram extends BaseComponent {
                 <TouchableOpacity onPress={() => this.nextActivity()}>
                     <Text style={{color:  this.state.colorPrimary, fontSize: 30}}>Setting</Text>
                 </TouchableOpacity>
-
                 <View>
                     <Image source={{uri: this.state.gift_0}} style={{width: 100, height: 100}}/>
                     <Image source={{uri: this.state.home_0}} style={{width: 100, height: 100}}/>

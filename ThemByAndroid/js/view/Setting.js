@@ -38,26 +38,26 @@ export default class Setting extends BaseComponent {
                 alignItems: 'center',
                 backgroundColor:this.state.primary,
             }}>
+                <TouchableOpacity onPress={() => this._onPress()}>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>back </Text>
+                </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.skinSetting()}>
                     <Text style={{color: this.state.colorPrimary, fontSize: 30}}>skinSetting</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.requestReadPermission.bind(this)}>
-                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>权限申请读写</Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 20}}>权限申请读写</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.requestCarmeraPermission.bind(this)}>
-                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>权限申请相机</Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 20}}>权限申请相机</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.requestLocationPermission.bind(this)}>
-                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>权限申请访问地址</Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 20}}>权限申请访问地址</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.checkPermission.bind(this)}>
-                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>查询权限申请读写</Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 20}}>查询权限申请读写</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.requestMultiplePermission.bind(this)}>
-                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>权限申请所有</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this._onPress()}>
-                    <Text style={{color: this.state.colorPrimary, fontSize: 30}}>back </Text>
+                    <Text style={{color: this.state.colorPrimary, fontSize: 20}}>权限申请所有</Text>
                 </TouchableOpacity>
                  <View style={{flexDirection:'row'}}>
                     <Image source={{uri: this.state.gift_0}} style={{width: 100, height: 100}}/>
