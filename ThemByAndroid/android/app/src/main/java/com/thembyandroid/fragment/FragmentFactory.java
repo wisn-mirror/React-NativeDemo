@@ -41,7 +41,6 @@ public class FragmentFactory {
             case "WatchFragment":
                 fragment= new WatchFragment();
                 break;
-
         }
         return fragment;
     }

@@ -28,9 +28,8 @@ public class SkinModule extends BaseReactContextBaseJavaModule {
 
     public SkinModule(ReactApplicationContext reactContext) {
         super(reactContext);
+        LogUtils.e(TAG,"创建了对象 reactContext"+reactContext);
     }
-//    private List<SkinTask.DataBean.ThemeListBean> mThemeList;
-
     @Override
     public String getName() {
         return "SkinModule";
@@ -186,7 +185,6 @@ public class SkinModule extends BaseReactContextBaseJavaModule {
         for (int i = 0; i < StateName.size(); i++) {
             String string = StateName.getString(i);
             String path = SkinManager.getInstance().getColorForRN(string);
-//            log_d(TAG, "getColorList path:" + path + "  name:" + string);
             params.putString(string, path);
         }
         callback.invoke(params);
@@ -210,7 +208,6 @@ public class SkinModule extends BaseReactContextBaseJavaModule {
                 String stateName = imageMapIterator.nextKey();
                 String Name = imageMap.getString(stateName);
                 String path = SkinManager.getInstance().getPathForRN(Name);
-//                log_d(TAG, "getImageMap path:" + path + "  name:" + Name + "  key:" + stateName);
                 params.putString(stateName, path);
             }
         }
@@ -232,7 +229,6 @@ public class SkinModule extends BaseReactContextBaseJavaModule {
             for (int i = 0; i < ImageList.size(); i++) {
                 String string = ImageList.getString(i);
                 String path = SkinManager.getInstance().getPathForRN(string);
-//                log_d(TAG, "getImageList path:" + path + "  name:" + string);
                 params.putString(string, path);
             }
         }

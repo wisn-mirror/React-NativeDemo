@@ -94,7 +94,7 @@ public class RadioButtonViewPagerNavigatorActivity extends BaseReactActivity imp
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), data);
         mViewpager.setAdapter(fragmentAdapter);
         mViewpager.addOnPageChangeListener(this);
-        mViewpager.setCurrentItem(1);
+        mViewpager.setCurrentItem(0);
     }
 
     public void addTipBackgroundAttr(View view, int attrValueresId){

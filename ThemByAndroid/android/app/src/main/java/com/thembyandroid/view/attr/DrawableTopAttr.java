@@ -7,6 +7,7 @@ import android.view.View;
 import com.thembyandroid.view.TipRadioButton;
 import com.wisn.skinlib.SkinManager;
 import com.wisn.skinlib.attr.base.SkinAttr;
+import com.wisn.skinlib.utils.LogUtils;
 
 
 /**

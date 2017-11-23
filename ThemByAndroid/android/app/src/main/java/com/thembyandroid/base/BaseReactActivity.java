@@ -3,6 +3,7 @@ package com.thembyandroid.base;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,7 +15,10 @@ import com.facebook.react.modules.core.PermissionAwareActivity;
 import com.facebook.react.modules.core.PermissionListener;
 import com.thembyandroid.R;
 import com.wisn.skinlib.SkinManager;
+import com.wisn.skinlib.base.SkinAppCompatActivity;
+import com.wisn.skinlib.base.SkinApplication;
 import com.wisn.skinlib.base.SkinFragmentActivity;
+import com.wisn.skinlib.utils.LogUtils;
 
 import javax.annotation.Nullable;
 
@@ -22,9 +26,9 @@ import javax.annotation.Nullable;
  * Created by wisn on 2017/9/18.
  */
 
-public abstract class BaseReactActivity extends SkinFragmentActivity implements DefaultHardwareBackBtnHandler,
-                                                                                PermissionAwareActivity {
-
+public abstract class BaseReactActivity extends SkinAppCompatActivity implements DefaultHardwareBackBtnHandler,
+                                                                                 PermissionAwareActivity {
+    private static final String TAG="BaseReactActivity";
     private final BaseReactActivityDelegate mDelegate;
 
     protected BaseReactActivity() {
@@ -103,11 +107,13 @@ public abstract class BaseReactActivity extends SkinFragmentActivity implements 
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
+        LogUtils.e(TAG,"keyCode: "+keyCode+"  KeyEvent:"+event);
         return mDelegate.onKeyUp(keyCode, event) || super.onKeyUp(keyCode, event);
     }
 
     @Override
     public void onBackPressed() {
+        LogUtils.e(TAG," onBackPressed");
         if (!mDelegate.onBackPressed()) {
             super.onBackPressed();
         }
