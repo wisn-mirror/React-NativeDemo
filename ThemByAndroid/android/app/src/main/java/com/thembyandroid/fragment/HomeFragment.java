@@ -27,8 +27,6 @@ public class HomeFragment extends SkinFragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        Bundle bundle = this.getArguments();
-//        String tag = bundle.getString("TAG");
         TextView textView = (TextView) view.findViewById(R.id.fragment_textView);
         tipRadioButton = (TipRadioButton) view.findViewById(R.id.radiobutton_bg_home_aa);
         textView.setText("HomeFragment原生");
